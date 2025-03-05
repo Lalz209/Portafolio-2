@@ -1,30 +1,62 @@
 ---
-import '../styles/global.css'; // Asegúrate de que la ruta sea correcta
+import '../styles/global.css';
 const modoInicial = "web";
 ---
 
 <div id="contenedor" class={modoInicial}>
+  <!-- Switches -->
+  <div class="flex space-x-4 p-4">
+    <nav id="navegacion" class="web-mode bg-gray-100 p-4">
+      <ul class="flex space-x-4">
+        <li>Inicio</li>
+        <li>Acerca</li>
+        <li>Contacto</li>
+      </ul>
+    </nav>
+    <div>
+      <span>Modo:</span>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="switch-modo" class="sr-only peer">
+        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition"></div>
+        <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
+        <span class="ml-2">Web / CV</span>
+      </label>
+    </div>
+    <div>
+      <span>Tema:</span>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="switch-dark" class="sr-only peer">
+        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-gray-600 transition"></div>
+        <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
+        <span class="ml-2">Claro / Oscuro</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  
   <h1 id="titulo" class="text-3xl font-bold text-black web-mode">
     Hola, bienvenido
   </h1>
   <p id="texto" class="web-mode">
     Este es un texto de ejemplo
   </p>
-  <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-    Cambiar modo
-  </button>
 </div>
 
 <script>
   const contenedor = document.getElementById("contenedor");
+  const navegacion = document.getElementById("navegacion");
   const titulo = document.getElementById("titulo");
   const texto = document.getElementById("texto");
-  const boton = document.querySelector("button");
+  const switchModo = document.getElementById("switch-modo");
+  const switchDark = document.getElementById("switch-dark");
 
-  boton.addEventListener("click", () => {
+  // Cambiar entre web y CV
+  switchModo.addEventListener("change", () => {
     if (contenedor.classList.contains("web")) {
       contenedor.classList.remove("web");
       contenedor.classList.add("cv");
+      navegacion.classList.add("hidden"); // Ocultar nav en CV
       titulo.classList.remove("web-mode");
       titulo.classList.add("cv-mode");
       texto.classList.remove("web-mode");
@@ -32,11 +64,17 @@ const modoInicial = "web";
     } else {
       contenedor.classList.remove("cv");
       contenedor.classList.add("web");
+      navegacion.classList.remove("hidden"); // Mostrar nav en web
       titulo.classList.remove("cv-mode");
       titulo.classList.add("web-mode");
       texto.classList.remove("cv-mode");
       texto.classList.add("web-mode");
     }
+  });
+
+  // Cambiar entre claro y oscuro
+  switchDark.addEventListener("change", () => {
+    contenedor.classList.toggle("dark-mode");
   });
 </script>
 
@@ -51,17 +89,25 @@ const modoInicial = "web";
     border: 1px solid #ccc;
   }
   .web-mode {
-    color: #2563eb; /* Azul para modo web */
+    color: #2563eb;
     padding: 1rem;
   }
   .cv-mode {
-    color: #16a34a; /* Verde para modo CV */
+    color: #16a34a;
     padding: 0.5rem;
   }
-  .web-mode.text-3xl {
-    font-size: 2rem; /* Tamaño diferente para h1 en modo web */
+  .dark-mode .web-mode {
+    color: #93c5fd; /* Azul claro en modo oscuro para web */
+    background-color: #1e3a8a; /* Fondo oscuro para web */
   }
-  .cv-mode.text-3xl {
-    font-size: 1.5rem; /* Tamaño diferente para h1 en modo CV */
+  .dark-mode .cv-mode {
+    color: #86efac; /* Verde claro en modo oscuro para CV */
+    background-color: #14532d; /* Fondo oscuro para CV */
+  }
+  .dark-mode .web {
+    background-color: #374151; /* Gris oscuro para contenedor en web */
+  }
+  .dark-mode .cv {
+    background-color: #111827; /* Gris muy oscuro para contenedor en CV */
   }
 </style>
