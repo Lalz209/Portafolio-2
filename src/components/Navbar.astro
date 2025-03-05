@@ -1,0 +1,33 @@
+---
+const { InitialMode } = Astro.props;
+---
+
+<nav id="navigation" class={`bg-gray-100 p-4 ${InitialMode === "cv" ? "hidden" : ""}`}>
+  <ul class="flex space-x-4">
+    <li>Inicio</li>
+    <li>About me</li>
+    <li>Proyects</li>
+    <li>Certificados</li>
+    <li>Skills</li>
+  </ul>
+</nav>
+
+<script>
+  const navigation = document.getElementById("navigation")!;
+  const container = document.getElementById("container")!;
+
+  const observer = new MutationObserver(() => {
+    if (container.classList.contains("cv")) {
+      navigation.classList.add("hidden");
+    } else {
+      navigation.classList.remove("hidden");
+    }
+  });
+  observer.observe(container, { attributes: true, attributeFilter: ["class"] });
+</script>
+
+<style>
+  nav {
+    transition: all 0.3s ease;
+  }
+</style>

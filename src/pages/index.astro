@@ -1,18 +1,12 @@
 ---
 import '../styles/global.css';
-const modoInicial = "web";
+import NavBar from '../components/Navbar.astro';
+
+const InitialMode = "web";
 ---
 
-<div id="contenedor" class={modoInicial}>
-  <!-- Switches -->
+<div id="container" class={InitialMode}>
   <div class="flex space-x-4 p-4">
-    <nav id="navegacion" class="web-mode bg-gray-100 p-4">
-      <ul class="flex space-x-4">
-        <li>Inicio</li>
-        <li>Acerca</li>
-        <li>Contacto</li>
-      </ul>
-    </nav>
     <div>
       <span>Modo:</span>
       <label class="relative inline-flex items-center cursor-pointer">
@@ -33,48 +27,43 @@ const modoInicial = "web";
     </div>
   </div>
 
-  <!-- Contenido -->
-  
-  <h1 id="titulo" class="text-3xl font-bold text-black web-mode">
+  <NavBar InitialMode={InitialMode} />
+
+  <h1 id="tittle" class="text-3xl font-bold text-black web-mode">
     Hola, bienvenido
   </h1>
-  <p id="texto" class="web-mode">
-    Este es un texto de ejemplo
+  <p id="text" class="web-mode">
+    Este es un text de ejemplo
   </p>
 </div>
 
 <script>
-  const contenedor = document.getElementById("contenedor");
-  const navegacion = document.getElementById("navegacion");
-  const titulo = document.getElementById("titulo");
-  const texto = document.getElementById("texto");
-  const switchModo = document.getElementById("switch-modo");
-  const switchDark = document.getElementById("switch-dark");
+  const container = document.getElementById("container")!;
+  const tittle = document.getElementById("tittle")!;
+  const text = document.getElementById("text")!;
+  const switchModo = document.getElementById("switch-modo")!;
+  const switchDark = document.getElementById("switch-dark")!;
 
-  // Cambiar entre web y CV
   switchModo.addEventListener("change", () => {
-    if (contenedor.classList.contains("web")) {
-      contenedor.classList.remove("web");
-      contenedor.classList.add("cv");
-      navegacion.classList.add("hidden"); // Ocultar nav en CV
-      titulo.classList.remove("web-mode");
-      titulo.classList.add("cv-mode");
-      texto.classList.remove("web-mode");
-      texto.classList.add("cv-mode");
+    if (container.classList.contains("web")) {
+      container.classList.remove("web");
+      container.classList.add("cv");
+      tittle.classList.remove("web-mode");
+      tittle.classList.add("cv-mode");
+      text.classList.remove("web-mode");
+      text.classList.add("cv-mode");
     } else {
-      contenedor.classList.remove("cv");
-      contenedor.classList.add("web");
-      navegacion.classList.remove("hidden"); // Mostrar nav en web
-      titulo.classList.remove("cv-mode");
-      titulo.classList.add("web-mode");
-      texto.classList.remove("cv-mode");
-      texto.classList.add("web-mode");
+      container.classList.remove("cv");
+      container.classList.add("web");
+      tittle.classList.remove("cv-mode");
+      tittle.classList.add("web-mode");
+      text.classList.remove("cv-mode");
+      text.classList.add("web-mode");
     }
   });
 
-  // Cambiar entre claro y oscuro
   switchDark.addEventListener("change", () => {
-    contenedor.classList.toggle("dark-mode");
+    container.classList.toggle("dark-mode");
   });
 </script>
 
@@ -97,17 +86,17 @@ const modoInicial = "web";
     padding: 0.5rem;
   }
   .dark-mode .web-mode {
-    color: #93c5fd; /* Azul claro en modo oscuro para web */
-    background-color: #1e3a8a; /* Fondo oscuro para web */
+    color: #93c5fd;
+    background-color: #1e3a8a;
   }
   .dark-mode .cv-mode {
-    color: #86efac; /* Verde claro en modo oscuro para CV */
-    background-color: #14532d; /* Fondo oscuro para CV */
+    color: #86efac;
+    background-color: #14532d;
   }
   .dark-mode .web {
-    background-color: #374151; /* Gris oscuro para contenedor en web */
+    background-color: #374151;
   }
   .dark-mode .cv {
-    background-color: #111827; /* Gris muy oscuro para contenedor en CV */
+    background-color: #111827;
   }
 </style>
