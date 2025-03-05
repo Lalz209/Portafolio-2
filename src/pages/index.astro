@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import '../styles/global.css'
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const initialMode = 'web';
 ---
 
 <Layout>
-	<Welcome />
+	<div id="contenedor" class={initialMode}>
+		<h1 class="text-3xl font-bold text-black">Hola, bienvenido</h1>
+		<button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+		  Cambiar modo
+		</button>
+	  </div>
+	
 </Layout>
+
+<script>
+	const contenedor = document.getElementById("contenedor");
+	const boton = document.querySelector("button");
+  
+	boton.addEventListener("click", () => {
+	  if (contenedor.classList.contains("web")) {
+		contenedor.classList.remove("web");
+		contenedor.classList.add("cv");
+	  } else {
+		contenedor.classList.remove("cv");
+		contenedor.classList.add("web");
+	  }
+	});
+  </script>
+
+<style>
+	.web {
+	  background-color: #f0f0f0; /* Gris claro para modo web */
+	  padding: 2rem;
+	}
+	.cv {
+	  background-color: #ffffff; /* Blanco para modo CV */
+	  padding: 1rem;
+	  border: 1px solid #ccc; /* Borde sutil */
+	}
+  </style>
