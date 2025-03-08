@@ -1,33 +1,85 @@
 ---
-const { InitialMode } = Astro.props;
+const { modeInitial } = Astro.props;
 ---
 
-<nav id="navigation" class={`bg-gray-100 p-4 ${InitialMode === "cv" ? "hidden" : ""}`}>
+<nav id="navigation" class={`bg-gray-100 p-4 fixed flex justify-center top-0 left-0 w-full z-10 transition-all duration-300 ${modeInitial === "cv" ? "hidden" : "web-mode"}`}>
   <ul class="flex space-x-4">
-    <li>Inicio</li>
     <li>About me</li>
-    <li>Proyects</li>
-    <li>Certificados</li>
     <li>Skills</li>
+    <li>Projects</li>
+    <li>Certificates</li>
+    <li>Experience</li>
+    <li>Contact</li>
   </ul>
 </nav>
 
+
+<!-- Compact version on the right -->
+<div id="navigation-compact" class="top-auto hidden w-auto fixed right-4 bg-amber-600 p-2 rounded shadow-lg z-10 transition-all duration-300 web-mode">
+  <ul class="flex flex-col space-y-2">
+    <li><img src="arrow-up.svg"></li>
+    <li><img src="meeple.svg"></li>
+    <li><img src="books.svg"></li>
+    <li><img src="hammer.svg"></li>
+    <li><img src="certificate.svg"></li>
+    <li class="font-bold self-center">XP</li>
+    <li><img src="address-book.svg"></li>
+  </ul>
+</div>
+
 <script>
   const navigation = document.getElementById("navigation")!;
+  const navigationCompact = document.getElementById("navigation-compact")!;
   const container = document.getElementById("container")!;
 
+  // Show/hide based on mode
   const observer = new MutationObserver(() => {
     if (container.classList.contains("cv")) {
       navigation.classList.add("hidden");
+      navigationCompact.classList.add("hidden");
     } else {
       navigation.classList.remove("hidden");
+      navigationCompact.classList.add("hidden"); // Hide compact when returning to web
     }
   });
   observer.observe(container, { attributes: true, attributeFilter: ["class"] });
+
+  // Handle scroll
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (container.classList.contains("web")) { // Only in web mode
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scrolling down and past 100px: shrink and hide
+        navigation.classList.add("shrunk");
+        setTimeout(() => {
+          navigation.classList.add("hidden");
+          navigationCompact.classList.remove("hidden");
+        }, 300); // Wait for transition
+      } else if (currentScroll < lastScroll && currentScroll === 0) {
+        // Scrolling up or at the top: show normal
+        navigation.classList.remove("shrunk", "hidden");
+        navigationCompact.classList.add("hidden");
+      }
+      lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Avoid negative values
+    }
+  });
 </script>
 
 <style>
-  nav {
+  .web-mode {
+    
+  }
+  .shrunk {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  #navigation-compact {
+    width: auto;
+    padding: 20px; /* Fixed size for compact version */
+  }
+  .transition-all {
     transition: all 0.3s ease;
   }
 </style>
