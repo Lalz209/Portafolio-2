@@ -1,1 +1,52 @@
+/* styles/global.css */
 @import "tailwindcss";
+
+@theme {
+  /* Tema base: Web Light (predeterminado si no hay dark-mode) */
+  --color-background: #ffffff; /* white */
+  --color-txt: #000000; /* black */
+  --color-span: #0a8659; /* verde oscuro */
+  --color-2nd: #0000ff; /* azul puro */
+  --color-navbartxt: #a41818; /* rojo oscuro */
+  --color-nvbg: #dddddd;
+  --color-borders: #2c2c2c;
+  --color-fter: #007acc;
+}
+
+/* Modo Web Claro */
+.web {
+  /* Colores base de @theme */
+}
+
+/* Modo Web Oscuro */
+.web.dark-mode {
+  --color-background: #1E1E1E; /* gris oscuro */
+  --color-txt: #ffffff; /* white */
+  --color-span: #569cd6; /* azul claro */
+  --color-2nd: #cc8f77; /* naranja suave */
+  --color-navbartxt: #6A9955;
+  --color-nvbg: #3c3c3c; /* verde oliva */
+  --color-borders: #2c2c2c;
+}
+
+/* Modo CV Claro */
+.cv {
+  --color-background: #ffffff; /* white */
+  --color-txt: #000000; /* black */
+  --color-span: #0a8659; /* verde oscuro */
+  --color-2nd: #0000ff; /* heredado de web-light */
+  --color-navbartxt: #a41818; /* heredado de web-light */
+
+  --color-borders: #2c2c2c;
+}
+
+/* Modo CV Oscuro */
+.cv.dark-mode {
+  --color-background: #1E1E1E; /* gris oscuro */
+  --color-txt: #ffffff; /* white */
+  --color-span: #6A9955; /* verde oliva */
+  --color-2nd: #cc8f77; /* ejemplo, heredado de web-dark */
+  --color-navbar: #6A9955; /* ejemplo, igual a span */
+
+  --color-borders: #2c2c2c;
+}

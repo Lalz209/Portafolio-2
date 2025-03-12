@@ -1,112 +1,77 @@
 ---
 import '../styles/global.css';
 import NavBar from '../components/Navbar.astro';
-import Welcome from '../components/Welcome.astro'
+import Welcome from '../components/Welcome.astro';
 
 const InitialMode = "web";
 ---
 
-<div id="container" class={InitialMode}>
-  <div class="section py-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
-  <div class="flex justify-center mt-5 space-x-4 p-4">
-    <div>
-      <span>Modo:</span>
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" id="switch-modo" class="sr-only peer">
-        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition"></div>
-        <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
-        <span class="ml-2">Web / CV</span>
-      </label>
+<div id="container" class={`${InitialMode} bg-borders p-2 min-h-screen`}>
+  <div class="section py-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl bg-background">
+    <div class="flex justify-center mt-5 space-x-4 p-4">
+      <div>
+        <span class="text-txt">Modo:</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="switch-modo" class="sr-only peer">
+          <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition"></div>
+          <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
+          <span class="ml-2 text-txt">Web / CV</span>
+        </label>
+      </div>
+      <div>
+        <span class="text-txt">Tema:</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="switch-dark" class="sr-only peer">
+          <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-gray-600 transition"></div>
+          <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
+          <span class="ml-2 text-txt">Claro / Oscuro</span>
+        </label>
+      </div>    
     </div>
-    <div>
-      <span>Tema:</span>
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" id="switch-dark" class="sr-only peer">
-        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-gray-600 transition"></div>
-        <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
-        <span class="ml-2">Claro / Oscuro</span>
-      </label>
-    </div>    
+
+    <NavBar InitialMode={InitialMode} />
+
+    <h1 id="tittle" class="flex justify-center text-3xl font-bold text-txt">
+      Mauricio Palacio
+    </h1>
+    <h2 id="description" class="flex justify-center text-span">
+      SOFTWARE DEVELOPER
+    </h2>
+
+    <Welcome />
   </div>
-
-  <NavBar InitialMode={InitialMode} />
-
-  <h1 id="tittle" class="flex justify-center text-3xl font-bold text-black web-mode">
-    Mauricio Palacio
-  </h1>
-  <h2 id="description" class="web-mode flex justify-center">
-    SOFTWARE DEVELOPER
-  </h2>
-
-  <Welcome />
-</div>
 </div>
 
 <script>
   const container = document.getElementById("container")!;
-  const tittle = document.getElementById("tittle")!;
-  const text = document.getElementById("text")!;
   const switchModo = document.getElementById("switch-modo")!;
   const switchDark = document.getElementById("switch-dark")!;
-  const description = document.getElementById("description")!;
 
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (prefersDark) {
+    container.classList.add("dark-mode");
+    switchDark.checked = true; 
+  }
+
+  
   switchModo.addEventListener("change", () => {
     if (container.classList.contains("web")) {
       container.classList.remove("web");
       container.classList.add("cv");
-      tittle.classList.remove("web-mode");
-      tittle.classList.add("cv-mode");
-      description.classList.remove("web-mode");
-      description.classList.add("cv-mode");
-      text.classList.remove("web-mode");
-      text.classList.add("cv-mode");
     } else {
       container.classList.remove("cv");
       container.classList.add("web");
-      tittle.classList.remove("cv-mode");
-      tittle.classList.add("web-mode");
-      text.classList.remove("cv-mode");
-      text.classList.add("web-mode");
-      description.classList.remove("cv-mode");
-      description.classList.add("web-mode");
     }
   });
 
+  // Cambiar entre Claro y Oscuro
   switchDark.addEventListener("change", () => {
     container.classList.toggle("dark-mode");
   });
 </script>
 
 <style>
-  .web {
-    background-color: #f0f0f0;
-    padding: 1rem;
-  }
-  .cv {
-    background-color: #f0f0f0;
-    padding: 1rem;
-    border: 1px solid #ccc;
-  }
-  .web-mode {
-    color: #2563eb;
-    padding: 1rem;
-  }
-  .cv-mode {
-    color: #16a34a;
-    padding: 1rem;
-  }
-  .dark-mode .web-mode {
-    color: white;
-    background-color: #252526;
-  }
-  .dark-mode .cv-mode {
-    color: white;
-    background-color: #252526;
-  }
-  .dark-mode .web {
-    background-color: #252526;
-  }
-  .dark-mode .cv {
-    background-color: #252526;
+  .section {
+    
   }
 </style>
