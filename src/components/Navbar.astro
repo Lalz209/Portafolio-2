@@ -2,7 +2,7 @@
 const { modeInitial } = Astro.props; // Renombré a InitialMode para consistencia con index.astro
 ---
 
-<nav id="navigation" class={`bg-navbar text-txt p-4 fixed flex justify-center top-0 left-0 w-full z-10 transition-all duration-300 ${modeInitial === "cv" ? "hidden" : ""}`}>
+<nav id="navigation" class={`bg-nvbg  rounded-4xl text-txt p-4 fixed flex justify-center top-10 left-1/2 transform -translate-x-1/2 w-auto z-10 transition-all duration-300 ${modeInitial === "cv" ? "hidden" : ""}`}>
   <ul class="flex space-x-4">
     <li>About me</li>
     <li>Skills</li>
@@ -14,7 +14,7 @@ const { modeInitial } = Astro.props; // Renombré a InitialMode para consistenci
 </nav>
 
 <!-- Compact version on the right -->
-<div id="navigation-compact" class="top-auto hidden w-auto fixed right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300">
+<div id="navigation-compact" class="top-1/2 transform -translate-y-1/2 hidden w-auto fixed right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300">
   <ul class="flex flex-col space-y-2">
     <li><img src="arrow-up.svg"></li>
     <li><img src="meeple.svg"></li>

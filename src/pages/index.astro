@@ -1,42 +1,38 @@
 ---
-import '../styles/global.css';
-import NavBar from '../components/Navbar.astro';
-import Welcome from '../components/Welcome.astro';
+import "../styles/global.css";
+import NavBar from "../components/Navbar.astro";
+import Welcome from "../components/Welcome.astro";
+import Switches from "../components/Switches.astro"
 
 const InitialMode = "web";
 ---
 
-<div id="container" class={`${InitialMode} bg-borders p-2 min-h-screen`}>
-  <div class="section py-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl bg-background">
-    <div class="flex justify-center mt-5 space-x-4 p-4">
-      <div>
-        <span class="text-txt">Modo:</span>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" id="switch-modo" class="sr-only peer">
-          <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition"></div>
-          <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
-          <span class="ml-2 text-txt">Web / CV</span>
-        </label>
-      </div>
-      <div>
-        <span class="text-txt">Tema:</span>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" id="switch-dark" class="sr-only peer">
-          <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-gray-600 transition"></div>
-          <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full peer-checked:translate-x-5 transition"></div>
-          <span class="ml-2 text-txt">Claro / Oscuro</span>
-        </label>
-      </div>    
-    </div>
+<div id="container" class={`${InitialMode} bg-background min-h-screen`}>
+  <div
+    class="section py-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+  >
+    <!-- Switches en vertical, a la izquierda en pantallas grandes -->
+    <Switches />
+    
 
     <NavBar InitialMode={InitialMode} />
 
-    <h1 id="tittle" class="flex justify-center text-3xl font-bold text-txt">
-      Mauricio Palacio
+    <div class="flex justify-start items-center gap-3.5 pt-30">
+      <img class="h-30 rounded-full" src="Foto.png"/>
+    <h1
+      id="tittle"
+      class="flex justify-center text-4xl font-bold text-txt"
+    >
+      Hi, I am Mauricio Palacio
     </h1>
-    <h2 id="description" class="flex justify-center text-span">
-      SOFTWARE DEVELOPER
-    </h2>
+  </div>
+    <h3 id="description" class=" text-2xl pt-10 w-160 text-txt opacity-85">
+      <span class="text-span opacity-100">Software developer</span> from Medellin, Colombia, and Living in Guadalajara, Mexico. 2 years of programming training and currently developing web projects. Passionate about <span class="text-span opacity-100">software development</span> and constantly evolving.
+    </h3>
+    <div class="flex gap-3 pt-5">
+      <a href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/" target="_blank" ><img src="LinkedinIcon.png" class="w-10"/></a>
+      <a href="https://github.com/Lalz209" target="_blank" ><img src="GitHubIcon.webp" class="w-10"/></a>
+    </div>
 
     <Welcome />
   </div>
@@ -44,17 +40,21 @@ const InitialMode = "web";
 
 <script>
   const container = document.getElementById("container")!;
-  const switchModo = document.getElementById("switch-modo")!;
-  const switchDark = document.getElementById("switch-dark")!;
+  const switchModo = document.getElementById("switch-modo")! as HTMLInputElement;
+  const switchDark = document.getElementById("switch-dark")! as HTMLInputElement;
+  const switchModoMobile = document.getElementById("switch-modo-mobile")! as HTMLInputElement;
+  const switchDarkMobile = document.getElementById("switch-dark-mobile")! as HTMLInputElement;
 
+  // Detectar preferencia inicial del sistema
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   if (prefersDark) {
     container.classList.add("dark-mode");
-    switchDark.checked = true; 
+    switchDark.checked = true;
+    switchDarkMobile.checked = true;
   }
 
-  
-  switchModo.addEventListener("change", () => {
+  // Cambiar entre Web y CV
+  const handleModeChange = () => {
     if (container.classList.contains("web")) {
       container.classList.remove("web");
       container.classList.add("cv");
@@ -62,16 +62,16 @@ const InitialMode = "web";
       container.classList.remove("cv");
       container.classList.add("web");
     }
-  });
+  };
+  switchModo.addEventListener("change", handleModeChange);
+  switchModoMobile.addEventListener("change", handleModeChange);
 
   // Cambiar entre Claro y Oscuro
-  switchDark.addEventListener("change", () => {
+  const handleDarkChange = () => {
     container.classList.toggle("dark-mode");
-  });
+    switchDark.checked = container.classList.contains("dark-mode");
+    switchDarkMobile.checked = container.classList.contains("dark-mode");
+  };
+  switchDark.addEventListener("change", handleDarkChange);
+  switchDarkMobile.addEventListener("change", handleDarkChange);
 </script>
-
-<style>
-  .section {
-    
-  }
-</style>
