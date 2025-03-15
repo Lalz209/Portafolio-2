@@ -1,8 +1,10 @@
 /* styles/global.css */
 @import "tailwindcss";
+@import '@fontsource-variable/onest';
 
 @theme {
   /* Tema base: Web Light (predeterminado si no hay dark-mode) */
+  --font-display: "Onest Variable", "sans-serif"; 
   --color-background: #ffffff; /* white */
   --color-txt: #000000; /* black */
   --color-span: #0a8659; /* verde oscuro */
@@ -14,7 +16,7 @@
   --color-span1:;
   --color-span2: ;
   --color-spanLink: #dcdcaa;
-  --color-bg1:;
+  --color-bg1:#252526;
   --color-bg2:;
 }
 
