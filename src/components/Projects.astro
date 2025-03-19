@@ -1,0 +1,134 @@
+---
+const certificates = [
+  {
+    image: "/picture.png",
+    institution: "Institution 1",
+    year: "2023",
+    link: "https://example.com/cert1",
+    summary: "Learned foundational web development skills.",
+  },
+  {
+    image: "/cs50.png",
+    institution: "Institution 2",
+    year: "2024",
+    link: "https://example.com/cert2",
+    summary: "Mastered advanced JavaScript and frameworks.",
+  },
+  {
+    intitution: "Harvard University",
+    year: "2024",
+    Course: "CS50 Introduction to Computer Science",
+    Link: "https://cs50.harvard.edu/certificates/5c93c8a7-92a2-4e23-9980-67fe32de04d3",
+    Summary: "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics."
+},
+];
+---
+
+<section class="certificates grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-certificates={JSON.stringify(certificates)}>
+  {certificates.map((cert, index) => (
+    <div class="certificate-card bg-gray-100 p-4 rounded-lg shadow-md">
+      <img
+        class="thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
+        src={cert.image}
+        alt={`Certificate from ${cert.institution}`}
+        data-index={index}
+      />
+      <h3 class="text-lg font-semibold mt-2">{cert.institution}</h3>
+      <p class="text-sm text-gray-600">{cert.year}</p>
+      <a href={cert.link} target="_blank" class="text-blue-500 underline text-sm">View Certificate</a>
+      <p class="text-sm mt-2">{cert.summary}</p>
+    </div>
+  ))}
+</section>
+
+<!-- Modal -->
+<div class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div class="modal-content bg-white p-6 rounded-lg w-full max-w-[90vw]">
+    <img class="modal-image w-full max-h-[60vh] object-contain" src="" alt="" />
+    <div class="modal-info mt-4">
+      <h3 class="text-xl font-bold institution"></h3>
+      <p class="text-sm text-gray-600 year"></p>
+      <a href="" target="_blank" class="link text-blue-500 underline text-sm">View Certificate</a>
+      <p class="summary text-sm mt-2"></p>
+    </div>
+    <button class="close-btn absolute top-4 right-4 text-white bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center">X</button>
+    <button class="prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 rounded-full w-8 h-8 hidden">←</button>
+    <button class="next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 rounded-full w-8 h-8 hidden">→</button>
+  </div>
+</div>
+
+<script>
+  // Obtener los datos desde el atributo data-certificates
+  const section = document.querySelector(".certificates");
+  const certificates = JSON.parse(section.dataset.certificates);
+  let currentIndex = 0;
+
+  // Seleccionar elementos del DOM
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const modal = document.querySelector(".modal");
+  const modalImage = document.querySelector(".modal-image");
+  const modalInstitution = document.querySelector(".institution");
+  const modalYear = document.querySelector(".year");
+  const modalLink = document.querySelector(".link");
+  const modalSummary = document.querySelector(".summary");
+  const closeBtn = document.querySelector(".close-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  // Verificar que todos los elementos existan
+  if (!modal || !modalImage || !modalInstitution || !modalYear || !modalLink || !modalSummary || !closeBtn || !prevBtn || !nextBtn) {
+    throw new Error("Uno o más elementos del modal no se encontraron");
+  }
+
+  // Evento de clic en las miniaturas
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+      currentIndex = parseInt(thumbnail.dataset.index || "0");
+      console.log("Clic en thumbnail, índice:", currentIndex, "Imagen:", certificates[currentIndex].image);
+      updateModal();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  // Cerrar modal con el botón X
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Cerrar modal al hacer clic fuera
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+
+  // Navegar al certificado anterior
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateModal();
+    }
+  });
+
+  // Navegar al certificado siguiente
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < certificates.length - 1) {
+      currentIndex++;
+      updateModal();
+    }
+  });
+
+  // Actualizar el contenido del modal
+  function updateModal() {
+    const cert = certificates[currentIndex];
+    console.log("Actualizando modal con:", cert.image);
+    modalImage.src = cert.image;
+    modalImage.alt = `Certificate from ${cert.institution}`;
+    modalInstitution.textContent = cert.institution;
+    modalYear.textContent = cert.year;
+    modalLink.href = cert.link;
+    modalLink.textContent = "View Certificate";
+    modalSummary.textContent = cert.summary;
+
+    prevBtn.classList.toggle("hidden", currentIndex === 0);
+    nextBtn.classList.toggle("hidden", currentIndex === certificates.length - 1);
+  }
+</script>
