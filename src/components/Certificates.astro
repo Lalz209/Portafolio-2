@@ -1,30 +1,117 @@
 ---
 const certificates = [
 {
-    intitution: "Harvard University",
+    image: "cs50.png",
+    institution: "Harvard University",
     year: "2024",
-    Course: "CS50 Introduction to Computer Science",
-    Link: "https://cs50.harvard.edu/certificates/5c93c8a7-92a2-4e23-9980-67fe32de04d3",
-    Summary: "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics."
+    course: "CS50 Introduction to Computer Science",
+    link: "https://cs50.harvard.edu/certificates/5c93c8a7-92a2-4e23-9980-67fe32de04d3",
+    summary: "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics."
 },
-{
-    image: "cs50.png",
-    institution: "Institution 2",
-    year: "2024",
-    link: "https://example.com/cert2",
-    summary: "Mastered advanced JavaScript and frameworks.",
-  },
-  {
-    image: "cs50.png",
-    institution: "Institution 2",
-    year: "2024",
-    link: "https://example.com/cert2",
-    summary: "Mastered advanced JavaScript and frameworks.",
-  },
 ]
 ---
+<h2 class="text-txt text-5xl text-center mb-30 font-bold">CERTIFICATES</h2>
+<section class="certificates flex justify-center mb-50" data-certificates={JSON.stringify(certificates)}>
 
-<div class="container flex flex-col">
-    <h2 class="text-txt text-5xl text-center font-bold">CERTIFICATES</h2>
+  {certificates.map((cert, index) => (
+    <div class="certificate-card w-70 bg-nvbg p-4 rounded-lg shadow-md text-center">
+      <img
+      class="thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
+      src={cert.image}
+      alt={`Certificate from ${cert.institution}`}
+      data-index={index}
+      />
+      <h3 class="text-txt">{cert.course}</h3>
+      <h3 class="text-lg font-semibold mt-2 text-txt">{cert.institution}</h3>
+      <p class="text-sm text-txt">{cert.year}</p>
+      <a href={cert.link} target="_blank" class="text-2nd underline text-sm">View Certificate</a>
+      <p class="text-sm mt-2 text-txt">{cert.summary}</p>
+    </div>
+  ))}
+</section>
 
+
+<div class="modal fixed inset-0 bg-gray-800 bg-opacity-10 hidden flex items-center justify-center z-50">
+  <div class="modal-content flex flex-col items-center  bg-background p-6 rounded-lg w-full max-w-[90vw]">
+    <img class="modal-image w-full max-h-[60vh] object-contain" src="" alt="" />
+    <div class="modal-info mt-4 text-center">
+      <h3 class="text-xl text-txt font-bold institution"></h3>
+      <h3 class="text-xl text-txt font-semibold course"></h3>
+      <p class="text-sm text-span year"></p>
+      <a href="" target="_blank" class="link text-2nd underline text-sm">View Certificate</a>
+      <p class="summary text-txt w-200 text-sm mt-2"></p>
+    </div>
+    <button class="close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">X</button>
+    <button class="prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"><img src="left-arrow.svg" class=""/></button>
+    <button class="next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"><img src="right-arrow.svg" class=""/></button>
+  </div>
 </div>
+
+<script>
+
+  const section = document.querySelector(".certificates") as HTMLElement | null;
+  if(!section) throw new Error("Element .certificates was not found");
+  const certificates = JSON.parse(section.dataset.certificates);
+  let currentIndex = 0;
+
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const modal = document.querySelector(".modal");
+  const modalImage = document.querySelector(".modal-image") as HTMLImageElement;
+  const modalInstitution = document.querySelector(".institution");
+  const modalCourse = document.querySelector(".course");
+  const modalYear = document.querySelector(".year");
+  const modalLink = document.querySelector(".link") as HTMLAnchorElement;
+  const modalSummary = document.querySelector(".summary");
+  const closeBtn = document.querySelector(".close-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  if (!modal || !modalImage || !modalCourse || !modalInstitution || !modalYear || !modalLink || !modalSummary || !closeBtn || !prevBtn || !nextBtn) {
+    throw new Error("one or more elements were not found");
+  }
+
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+      currentIndex = parseInt(thumbnail.dataset.index || "0");
+      updateModal();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden")
+  })
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden")
+  })
+
+prevBtn.addEventListener("click", () => {
+  if (currentIndex > 0){
+    currentIndex--;
+    updateModal();
+  }
+})
+
+nextBtn.addEventListener("click", () => {
+  if (currentIndex < certificates.length - 1){
+    currentIndex++;
+    updateModal();
+  }
+})
+
+function updateModal() {
+  const cert = certificates[currentIndex];
+  if (modalImage) modalImage.src = cert.image;
+  if (modalImage) modalImage.alt = `Certificate from ${cert.institution}`;
+  if (modalInstitution) modalInstitution.textContent = cert.institution;
+  if (modalCourse) modalCourse.textContent = cert.Course;
+  if (modalYear) modalYear.textContent = cert.year;
+  if (modalLink) modalLink.href = cert.link;
+  if (modalLink) modalLink.textContent = "View Certificate";
+  if (modalSummary) modalSummary.textContent = cert.summary;
+
+  if (prevBtn) prevBtn.classList.toggle("hidden", currentIndex === 0);
+  if (nextBtn) nextBtn.classList.toggle("hidden", currentIndex === certificates.length - 1)
+}
+</script>
