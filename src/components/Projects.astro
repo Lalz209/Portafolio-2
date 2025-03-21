@@ -1,7 +1,7 @@
 ---
 const projects = [
   {
-    image: "",
+    images: ["/node-icon.png", "/React-icon.svg.png"],
     title: "Critics",
     programmingLanguages: ["Flask", "Python", "SQLite", "React", "CSS", "HTML"],
     description:
@@ -13,11 +13,10 @@ const projects = [
       "Pagination",
       "See information from database rendered",
     ],
-    pdf: "",
     link: "",
   },
   {
-    image: "",
+    images: ["/game1v1.png"],
     title: "Game 1v1",
     programmingLanguages: ["", "Python"],
     description:
@@ -27,11 +26,10 @@ const projects = [
       "Select role, and weapon",
       "Turns to make options until the other one dies",
     ],
-    pdf: "",
     link: "",
   },
   {
-    image: "cncimg.png",
+    images: ["/cutencareweb.png", "/cutencarep.png", "/cutencare2.png", "/cutencare3.png"],
     title: "Landing page",
     programmingLanguages: [
       "React",
@@ -45,11 +43,10 @@ const projects = [
       "landing page where clients can comment about their experience, and see information about the services",
     status: "Finished",
     Features: ["Comment", "See opinions", "Pagination", "Carousel", "Filter"],
-    pdf: "/CutenCare.pdf", // Ajustado: Añadí "/" para que Astro lo busque en public/
     link: "",
   },
   {
-    image: "",
+    images: ["/portfolio1.png"],
     title: "Portfolio",
     programmingLanguages: [
       "Astro",
@@ -71,7 +68,6 @@ const projects = [
       "Carousel",
       "Filter",
     ],
-    pdf: "",
     link: "",
   },
 ];
@@ -86,11 +82,10 @@ const projects = [
     projects.map((pro, index) => (
       <div class="project-card bg-nvbg rounded-lg p-10 shadow-md w-90 flex flex-col gap-5 items-center">
         <img
-          src={pro.image}
+          src={pro.images[1] || ""}
           alt={pro.title}
           data-index={index}
-          data-pdf={pro.pdf}
-          class="thumbnail w-full h-40 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300 mb-5"
+          class="project-thumbnail w-full h-40 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300 mb-5"
         />
 
         <h3 class="title text-txt font-bold">{pro.title}</h3>
@@ -110,33 +105,27 @@ const projects = [
             <span class="">{fea}</span>
           ))}
         </div>
-
-        <button
-          class="preview-btn text-txt cursor-pointer border-solid hover:text-span border-2 p-2 border-txt rounded-full w-fit"
-          data-index={index}
-          data-pdf={pro.pdf}
-        >
-          PDF Preview
-        </button>
       </div>
     ))
   }
 </section>
 
-<div class="modal-project fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center z-50">
-  <div class="modal-pcontent flex flex-col items-center bg-background p-6 rounded-lg h-full w-full max-w-[90vw]">
-    <h2 class="modal-title text-txt text-3xl mb-10"></h2>
-    <h4 class="text-span">may look distorted due to the PDF format</h4>
-    <div class="modal-preview flex-1 overflow-y-auto">
-      <embed class="w-[80vw] max-w-[80vw] h-full" src="" type="application/pdf" />
+<div class="project-modal fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div class="project-modal-content flex flex-col items-center bg-background p-6 rounded-lg h-[90vh] w-full max-w-[90vw]">
+    <h2 class="project-modal-title text-txt text-3xl mb-4"></h2>
+    <div class="project-modal-main-image-container w-full h-[70%] overflow-auto items-center mb-10">
+      <img class="project-modal-main-image flex justify-self-center" src="" alt="" />
     </div>
-    <button class="close-btn-p absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
+    <div class="project-modal-thumbnails flex gap-2 mt-4 overflow-x-auto">
+      <!-- Las miniaturas se añadirán dinámicamente con JS -->
+    </div>
+    <button class="project-close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
       X
     </button>
-    <button class="prev-btn-p absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+    <button class="project-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
       <img src="left-arrow.svg" class="" />
     </button>
-    <button class="next-btn-p absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+    <button class="project-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
       <img src="right-arrow.svg" class="" />
     </button>
   </div>
@@ -146,72 +135,107 @@ const projects = [
   const section = document.querySelector(".projects") as HTMLElement | null;
   if (!section) throw new Error("Element .projects was not found");
   const projects = JSON.parse(section.dataset.projects ?? "[]");
-  let currentIndex = 0;
+  let projectCurrentIndex = 0;
+  let projectCurrentImageIndex = 0;
 
-  const clickableElements = document.querySelectorAll(".thumbnail, .preview-btn");
-  const closeBtn = document.querySelector(".close-btn-p") as HTMLButtonElement;
-  const prevBtn = document.querySelector(".prev-btn-p") as HTMLButtonElement;
-  const nextBtn = document.querySelector(".next-btn-p") as HTMLButtonElement;
-  const modal = document.querySelector(".modal-project") as HTMLElement;
-  const modalpdf = document.querySelector(".modal-preview embed") as HTMLEmbedElement;
-  const modalt = document.querySelector(".modal-title") as HTMLElement;
+  const projectThumbnails = document.querySelectorAll(".project-thumbnail");
+  const projectModal = document.querySelector(".project-modal") as HTMLElement;
+  const projectModalMainImage = document.querySelector(".project-modal-main-image") as HTMLImageElement;
+  const projectModalThumbnails = document.querySelector(".project-modal-thumbnails") as HTMLDivElement;
+  const projectModalTitle = document.querySelector(".project-modal-title") as HTMLElement;
+  const projectCloseBtn = document.querySelector(".project-close-btn") as HTMLButtonElement;
+  const projectPrevBtn = document.querySelector(".project-prev-btn") as HTMLButtonElement;
+  const projectNextBtn = document.querySelector(".project-next-btn") as HTMLButtonElement;
 
-  clickableElements.forEach((element) => {
-    element.addEventListener("click", () => {
-      const index = parseInt((element as HTMLElement).dataset.index || "0");
-      currentIndex = index;
-      const pdfz = (element as HTMLElement).dataset.pdf;
+  projectThumbnails.forEach((thumbnail) => {
+    let intervalId: number | null = null;
+    const index = parseInt((thumbnail as HTMLElement).dataset.index || "0");
+    const projectImages = projects[index].images || [];
 
-      updateModal();
-      modal.classList.remove("hidden");
+    thumbnail.addEventListener("mouseenter", () => {
+      if (projectImages.length > 1) {
+        let imgIndex = 0;
+        intervalId = setInterval(() => {
+          imgIndex = (imgIndex + 1) % projectImages.length;
+          (thumbnail as HTMLImageElement).src = projectImages[imgIndex];
+        }, 1000);
+      }
+    });
+
+    thumbnail.addEventListener("mouseleave", () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      (thumbnail as HTMLImageElement).src = projectImages[1] || "";
+    });
+
+    thumbnail.addEventListener("click", () => {
+      projectCurrentIndex = index;
+      projectCurrentImageIndex = 0;
+      updateProjectModal();
+      projectModal.classList.remove("hidden");
     });
   });
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden");
+  projectModal.addEventListener("click", (e) => {
+    if (e.target === projectModal) projectModal.classList.add("hidden");
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+  projectCloseBtn.addEventListener("click", () => {
+    projectModal.classList.add("hidden");
   });
 
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateModal();
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < projects.length - 1) {
-      currentIndex++;
-      updateModal();
+  projectPrevBtn.addEventListener("click", () => {
+    if (projectCurrentIndex > 0) {
+      projectCurrentIndex--;
+      projectCurrentImageIndex = 0;
+      updateProjectModal();
     }
   });
 
-  function updateModal() {
-    const project = projects[currentIndex]; // Obtenemos el proyecto actual
+  projectNextBtn.addEventListener("click", () => {
+    if (projectCurrentIndex < projects.length - 1) {
+      projectCurrentIndex++;
+      projectCurrentImageIndex = 0;
+      updateProjectModal();
+    }
+  });
 
-    // Actualizamos el título
-    if (modalt) {
-      modalt.textContent = project.title;
+  function updateProjectModal() {
+    const project = projects[projectCurrentIndex];
+
+    if (projectModalTitle) {
+      projectModalTitle.textContent = project.title;
     }
 
-    // Actualizamos el PDF
-    if (modalpdf) {
-      if (project.pdf && project.pdf !== "") {
-        modalpdf.src = `${project.pdf}#toolbar=0&navpanes=0`;
-      } else {
-        modalpdf.src = ""; // Si no hay PDF, dejamos el src vacío
-      }
+    if (projectModalMainImage) {
+      const images = project.images || [];
+      projectModalMainImage.src = images[projectCurrentImageIndex] || "";
+      projectModalMainImage.alt = `${project.title} screenshot ${projectCurrentImageIndex + 1}`;
     }
 
-    // Mostrar u ocultar las flechas de navegación
-    if (prevBtn) {
-      prevBtn.classList.toggle("hidden", currentIndex === 0);
+    if (projectModalThumbnails) {
+      projectModalThumbnails.innerHTML = "";
+      const images = project.images || [];
+      images.forEach((imgSrc: string, index: number) => {
+        const thumb = document.createElement("img");
+        thumb.src = imgSrc;
+        thumb.alt = `${project.title} thumbnail ${index + 1}`;
+        thumb.className = "w-16 h-16 object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500";
+        thumb.addEventListener("click", () => {
+          projectCurrentImageIndex = index;
+          updateProjectModal();
+        });
+        projectModalThumbnails.appendChild(thumb);
+      });
     }
-    if (nextBtn) {
-      nextBtn.classList.toggle("hidden", currentIndex === projects.length - 1);
+
+    if (projectPrevBtn) {
+      projectPrevBtn.classList.toggle("hidden", projectCurrentIndex === 0);
+    }
+    if (projectNextBtn) {
+      projectNextBtn.classList.toggle("hidden", projectCurrentIndex === projects.length - 1);
     }
   }
 </script>

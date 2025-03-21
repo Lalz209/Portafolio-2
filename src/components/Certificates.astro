@@ -1,25 +1,25 @@
 ---
 const certificates = [
-{
-    image: "cs50.png",
+  {
+    image: "/cs50.png",
     institution: "Harvard University",
     year: "2024",
     course: "CS50 Introduction to Computer Science",
     link: "https://cs50.harvard.edu/certificates/5c93c8a7-92a2-4e23-9980-67fe32de04d3",
     summary: "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics."
-},
-]
+  },
+];
 ---
+
 <h2 class="text-txt text-5xl text-center mb-30 font-bold">CERTIFICATES</h2>
 <section class="certificates flex justify-center mb-50" data-certificates={JSON.stringify(certificates)}>
-
   {certificates.map((cert, index) => (
     <div class="certificate-card w-70 bg-nvbg p-4 rounded-lg shadow-md text-center">
       <img
-      class="thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
-      src={cert.image}
-      alt={`Certificate from ${cert.institution}`}
-      data-index={index}
+        class="certificate-thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
+        src={cert.image}
+        alt={`Certificate from ${cert.institution}`}
+        data-index={index}
       />
       <h3 class="text-txt mt-4">{cert.course}</h3>
       <h3 class="text-lg font-semibold mt-2 text-txt">{cert.institution}</h3>
@@ -30,88 +30,101 @@ const certificates = [
   ))}
 </section>
 
-
-<div class="modal fixed inset-0 bg-gray-800 bg-opacity-10 hidden flex items-center justify-center z-50">
-  <div class="modal-content flex flex-col items-center  bg-background p-6 rounded-lg w-full max-w-[90vw]">
-    <img class="modal-image w-full max-h-[60vh] object-contain" src="" alt="" />
-    <div class="modal-info mt-4 text-center">
-      <h3 class="text-xl text-txt font-bold institution"></h3>
-      <h3 class="text-xl text-txt font-semibold course"></h3>
-      <p class="text-sm text-span year"></p>
-      <a href="" target="_blank" class="link text-spanLink underline text-sm">View Certificate</a>
-      <p class="summary text-txt w-200 text-sm mt-2"></p>
+<div class="certificate-modal fixed inset-0 bg-gray-800 bg-opacity-10 hidden flex items-center justify-center z-50">
+  <div class="certificate-modal-content flex flex-col items-center bg-background p-6 rounded-lg w-full max-w-[90vw]">
+    <img class="certificate-modal-image w-full max-h-[60vh] object-contain" src="" alt="" />
+    <div class="certificate-modal-info mt-4 text-center">
+      <h3 class="text-xl text-txt font-bold certificate-institution"></h3>
+      <h3 class="text-xl text-txt font-semibold certificate-course"></h3>
+      <p class="text-sm text-span certificate-year"></p>
+      <a href="" target="_blank" class="certificate-link text-spanLink underline text-sm">View Certificate</a>
+      <p class="certificate-summary text-txt w-200 text-sm mt-2"></p>
     </div>
-    <button class="close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">X</button>
-    <button class="prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"><img src="left-arrow.svg" class=""/></button>
-    <button class="next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"><img src="right-arrow.svg" class=""/></button>
+    <button class="certificate-close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">X</button>
+    <button class="certificate-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+      <img src="left-arrow.svg" class="" />
+    </button>
+    <button class="certificate-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+      <img src="right-arrow.svg" class="" />
+    </button>
   </div>
 </div>
 
 <script>
-
   const section = document.querySelector(".certificates") as HTMLElement | null;
-  if(!section) throw new Error("Element .certificates was not found");
+  if (!section) throw new Error("Element .certificates was not found");
   const certificates = JSON.parse(section.dataset.certificates ?? "[]");
-  let currentIndex = 0;
+  let certificateCurrentIndex = 0;
 
-  const thumbnails = document.querySelectorAll(".thumbnail");
-  const modal = document.querySelector(".modal");
-  const modalImage = document.querySelector(".modal-image") as HTMLImageElement;
-  const modalInstitution = document.querySelector(".institution");
-  const modalCourse = document.querySelector(".course");
-  const modalYear = document.querySelector(".year");
-  const modalLink = document.querySelector(".link") as HTMLAnchorElement;
-  const modalSummary = document.querySelector(".summary");
-  const closeBtn = document.querySelector(".close-btn");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
+  const certificateThumbnails = document.querySelectorAll(".certificate-thumbnail");
+  const certificateModal = document.querySelector(".certificate-modal") as HTMLElement;
+  const certificateModalImage = document.querySelector(".certificate-modal-image") as HTMLImageElement;
+  const certificateModalInstitution = document.querySelector(".certificate-institution") as HTMLElement;
+  const certificateModalCourse = document.querySelector(".certificate-course") as HTMLElement;
+  const certificateModalYear = document.querySelector(".certificate-year") as HTMLElement;
+  const certificateModalLink = document.querySelector(".certificate-link") as HTMLAnchorElement;
+  const certificateModalSummary = document.querySelector(".certificate-summary") as HTMLElement;
+  const certificateCloseBtn = document.querySelector(".certificate-close-btn") as HTMLButtonElement;
+  const certificatePrevBtn = document.querySelector(".certificate-prev-btn") as HTMLButtonElement;
+  const certificateNextBtn = document.querySelector(".certificate-next-btn") as HTMLButtonElement;
 
-  if (!modal || !modalImage || !modalCourse || !modalInstitution || !modalYear || !modalLink || !modalSummary || !closeBtn || !prevBtn || !nextBtn) {
+  if (
+    !certificateModal ||
+    !certificateModalImage ||
+    !certificateModalCourse ||
+    !certificateModalInstitution ||
+    !certificateModalYear ||
+    !certificateModalLink ||
+    !certificateModalSummary ||
+    !certificateCloseBtn ||
+    !certificatePrevBtn ||
+    !certificateNextBtn
+  ) {
     throw new Error("one or more elements were not found");
   }
 
-  thumbnails.forEach((thumbnail) => {
+  certificateThumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
-      currentIndex = parseInt((thumbnail as HTMLElement).dataset.index || "0");
-      updateModal();
-      modal.classList.remove("hidden");
+      certificateCurrentIndex = parseInt((thumbnail as HTMLElement).dataset.index || "0");
+      updateCertificateModal();
+      certificateModal.classList.remove("hidden");
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden")
-  })
+  certificateCloseBtn.addEventListener("click", () => {
+    certificateModal.classList.add("hidden");
+  });
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden")
-  })
+  certificateModal.addEventListener("click", (e) => {
+    if (e.target === certificateModal) certificateModal.classList.add("hidden");
+  });
 
-prevBtn.addEventListener("click", () => {
-  if (currentIndex > 0){
-    currentIndex--;
-    updateModal();
+  certificatePrevBtn.addEventListener("click", () => {
+    if (certificateCurrentIndex > 0) {
+      certificateCurrentIndex--;
+      updateCertificateModal();
+    }
+  });
+
+  certificateNextBtn.addEventListener("click", () => {
+    if (certificateCurrentIndex < certificates.length - 1) {
+      certificateCurrentIndex++;
+      updateCertificateModal();
+    }
+  });
+
+  function updateCertificateModal() {
+    const cert = certificates[certificateCurrentIndex];
+    if (certificateModalImage) certificateModalImage.src = cert.image;
+    if (certificateModalImage) certificateModalImage.alt = `Certificate from ${cert.institution}`;
+    if (certificateModalInstitution) certificateModalInstitution.textContent = cert.institution;
+    if (certificateModalCourse) certificateModalCourse.textContent = cert.course; // Corregido: "Course" a "course"
+    if (certificateModalYear) certificateModalYear.textContent = cert.year;
+    if (certificateModalLink) certificateModalLink.href = cert.link;
+    if (certificateModalLink) certificateModalLink.textContent = "View Certificate";
+    if (certificateModalSummary) certificateModalSummary.textContent = cert.summary;
+
+    if (certificatePrevBtn) certificatePrevBtn.classList.toggle("hidden", certificateCurrentIndex === 0);
+    if (certificateNextBtn) certificateNextBtn.classList.toggle("hidden", certificateCurrentIndex === certificates.length - 1);
   }
-})
-
-nextBtn.addEventListener("click", () => {
-  if (currentIndex < certificates.length - 1){
-    currentIndex++;
-    updateModal();
-  }
-})
-
-function updateModal() {
-  const cert = certificates[currentIndex];
-  if (modalImage) modalImage.src = cert.image;
-  if (modalImage) modalImage.alt = `Certificate from ${cert.institution}`;
-  if (modalInstitution) modalInstitution.textContent = cert.institution;
-  if (modalCourse) modalCourse.textContent = cert.Course;
-  if (modalYear) modalYear.textContent = cert.year;
-  if (modalLink) modalLink.href = cert.link;
-  if (modalLink) modalLink.textContent = "View Certificate";
-  if (modalSummary) modalSummary.textContent = cert.summary;
-
-  if (prevBtn) prevBtn.classList.toggle("hidden", currentIndex === 0);
-  if (nextBtn) nextBtn.classList.toggle("hidden", currentIndex === certificates.length - 1)
-}
 </script>
