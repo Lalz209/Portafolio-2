@@ -1,12 +1,217 @@
 ---
-const proyects = [
+const projects = [
   {
+    image: "",
     title: "Critics",
-    description: "",
-    programmingLanguages: "",
-     
-
-
+    programmingLanguages: ["Flask", "Python", "SQLite", "React", "CSS", "HTML"],
+    description:
+      "Web page where users can comment their opinions about a game, and select if they recommend the gamer, or if they don't",
+    status: "In process",
+    Features: [
+      "Load data to database",
+      "Login",
+      "Pagination",
+      "See information from database rendered",
+    ],
+    pdf: "",
+    link: "",
   },
-]
+  {
+    image: "",
+    title: "Game 1v1",
+    programmingLanguages: ["", "Python"],
+    description:
+      "Game to be played on console for two players where each player selects weapon, class, and in turns select what actions wants to do until one of both dies",
+    status: "Finished",
+    Features: [
+      "Select role, and weapon",
+      "Turns to make options until the other one dies",
+    ],
+    pdf: "",
+    link: "",
+  },
+  {
+    image: "cncimg.png",
+    title: "Landing page",
+    programmingLanguages: [
+      "React",
+      "MongoDB",
+      "Javascript",
+      "CSS",
+      "HTML",
+      "Node.js",
+    ],
+    description:
+      "landing page where clients can comment about their experience, and see information about the services",
+    status: "Finished",
+    Features: ["Comment", "See opinions", "Pagination", "Carousel", "Filter"],
+    pdf: "/CutenCare.pdf", // Ajustado: Añadí "/" para que Astro lo busque en public/
+    link: "",
+  },
+  {
+    image: "",
+    title: "Portfolio",
+    programmingLanguages: [
+      "Astro",
+      "Javascript",
+      "Tailwind",
+      "HTML",
+      "Node.js",
+      "TypeScript partially",
+      "",
+      "JSX partially",
+    ],
+    description:
+      "Webpage made for my portfolio where any relevant information about myself to find a job with it can be found",
+    status: "Finished",
+    Features: [
+      "Dynamic navbar",
+      "Modal",
+      "Contact via e-mail",
+      "Carousel",
+      "Filter",
+    ],
+    pdf: "",
+    link: "",
+  },
+];
 ---
+
+<h2 class="text-txt text-5xl text-center mb-30 font-bold">PROJECTS</h2>
+<section
+  class="projects grid place-items-center lg:grid-cols-2 md:grid-cols-1 gap-30 mb-50"
+  data-projects={JSON.stringify(projects)}
+>
+  {
+    projects.map((pro, index) => (
+      <div class="project-card bg-nvbg rounded-lg p-10 shadow-md w-90 flex flex-col gap-5 items-center">
+        <img
+          src={pro.image}
+          alt={pro.title}
+          data-index={index}
+          data-pdf={pro.pdf}
+          class="thumbnail w-full h-40 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300 mb-5"
+        />
+
+        <h3 class="title text-txt font-bold">{pro.title}</h3>
+        <p class="text-txt">{pro.description}</p>
+        <h3 class="font-bold text-txt">Languages used:</h3>
+        <div class="grid grid-cols-3 gap-3 place-items-center text-center text-span">
+          {pro.programmingLanguages.map((leng) => (
+            <span>{leng}</span>
+          ))}
+        </div>
+        <h3 class="text-txt font-bold">
+          Status: <span class="text-2nd">{pro.status}</span>
+        </h3>
+        <h3 class="font-bold text-txt">Features</h3>
+        <div class="flex flex-col gap-3 text-center text-span">
+          {pro.Features.map((fea) => (
+            <span class="">{fea}</span>
+          ))}
+        </div>
+
+        <button
+          class="preview-btn text-txt cursor-pointer border-solid hover:text-span border-2 p-2 border-txt rounded-full w-fit"
+          data-index={index}
+          data-pdf={pro.pdf}
+        >
+          PDF Preview
+        </button>
+      </div>
+    ))
+  }
+</section>
+
+<div class="modal-project fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div class="modal-pcontent flex flex-col items-center bg-background p-6 rounded-lg h-full w-full max-w-[90vw]">
+    <h2 class="modal-title text-txt text-3xl mb-10"></h2>
+    <h4 class="text-span">may look distorted due to the PDF format</h4>
+    <div class="modal-preview flex-1 overflow-y-auto">
+      <embed class="w-[80vw] max-w-[80vw] h-full" src="" type="application/pdf" />
+    </div>
+    <button class="close-btn-p absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
+      X
+    </button>
+    <button class="prev-btn-p absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+      <img src="left-arrow.svg" class="" />
+    </button>
+    <button class="next-btn-p absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+      <img src="right-arrow.svg" class="" />
+    </button>
+  </div>
+</div>
+
+<script>
+  const section = document.querySelector(".projects") as HTMLElement | null;
+  if (!section) throw new Error("Element .projects was not found");
+  const projects = JSON.parse(section.dataset.projects ?? "[]");
+  let currentIndex = 0;
+
+  const clickableElements = document.querySelectorAll(".thumbnail, .preview-btn");
+  const closeBtn = document.querySelector(".close-btn-p") as HTMLButtonElement;
+  const prevBtn = document.querySelector(".prev-btn-p") as HTMLButtonElement;
+  const nextBtn = document.querySelector(".next-btn-p") as HTMLButtonElement;
+  const modal = document.querySelector(".modal-project") as HTMLElement;
+  const modalpdf = document.querySelector(".modal-preview embed") as HTMLEmbedElement;
+  const modalt = document.querySelector(".modal-title") as HTMLElement;
+
+  clickableElements.forEach((element) => {
+    element.addEventListener("click", () => {
+      const index = parseInt((element as HTMLElement).dataset.index || "0");
+      currentIndex = index;
+      const pdfz = (element as HTMLElement).dataset.pdf;
+
+      updateModal();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateModal();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < projects.length - 1) {
+      currentIndex++;
+      updateModal();
+    }
+  });
+
+  function updateModal() {
+    const project = projects[currentIndex]; // Obtenemos el proyecto actual
+
+    // Actualizamos el título
+    if (modalt) {
+      modalt.textContent = project.title;
+    }
+
+    // Actualizamos el PDF
+    if (modalpdf) {
+      if (project.pdf && project.pdf !== "") {
+        modalpdf.src = `${project.pdf}#toolbar=0&navpanes=0`;
+      } else {
+        modalpdf.src = ""; // Si no hay PDF, dejamos el src vacío
+      }
+    }
+
+    // Mostrar u ocultar las flechas de navegación
+    if (prevBtn) {
+      prevBtn.classList.toggle("hidden", currentIndex === 0);
+    }
+    if (nextBtn) {
+      nextBtn.classList.toggle("hidden", currentIndex === projects.length - 1);
+    }
+  }
+</script>

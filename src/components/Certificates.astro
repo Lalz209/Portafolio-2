@@ -21,10 +21,10 @@ const certificates = [
       alt={`Certificate from ${cert.institution}`}
       data-index={index}
       />
-      <h3 class="text-txt">{cert.course}</h3>
+      <h3 class="text-txt mt-4">{cert.course}</h3>
       <h3 class="text-lg font-semibold mt-2 text-txt">{cert.institution}</h3>
       <p class="text-sm text-txt">{cert.year}</p>
-      <a href={cert.link} target="_blank" class="text-2nd underline text-sm">View Certificate</a>
+      <a href={cert.link} target="_blank" class="text-spanLink underline text-sm">View Certificate</a>
       <p class="text-sm mt-2 text-txt">{cert.summary}</p>
     </div>
   ))}
@@ -38,7 +38,7 @@ const certificates = [
       <h3 class="text-xl text-txt font-bold institution"></h3>
       <h3 class="text-xl text-txt font-semibold course"></h3>
       <p class="text-sm text-span year"></p>
-      <a href="" target="_blank" class="link text-2nd underline text-sm">View Certificate</a>
+      <a href="" target="_blank" class="link text-spanLink underline text-sm">View Certificate</a>
       <p class="summary text-txt w-200 text-sm mt-2"></p>
     </div>
     <button class="close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">X</button>
@@ -51,7 +51,7 @@ const certificates = [
 
   const section = document.querySelector(".certificates") as HTMLElement | null;
   if(!section) throw new Error("Element .certificates was not found");
-  const certificates = JSON.parse(section.dataset.certificates);
+  const certificates = JSON.parse(section.dataset.certificates ?? "[]");
   let currentIndex = 0;
 
   const thumbnails = document.querySelectorAll(".thumbnail");
@@ -72,7 +72,7 @@ const certificates = [
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
-      currentIndex = parseInt(thumbnail.dataset.index || "0");
+      currentIndex = parseInt((thumbnail as HTMLElement).dataset.index || "0");
       updateModal();
       modal.classList.remove("hidden");
     });
