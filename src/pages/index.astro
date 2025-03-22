@@ -6,13 +6,18 @@ import Switches from "../components/Switches.astro";
 import Skills from "../components/Skills.astro";
 import Certificates from "../components/Certificates.astro";
 import Proyects from "../components/Projects.astro"
+import Experience from "../components/Experience.astro"
 
 const InitialMode = "web";
+const email = "palacioluismauricio@gmail.com";
+const subject = "Contact from Portfolio";
+const body = "Hi, I saw your portfolio and would like to get in touch!";
+const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 ---
 
 <div id="container" class={`${InitialMode} bg-background min-h-screen font-display`}>
   <div
-    class="section py-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+    class="section pt-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
   >
     <!-- Switches en vertical, a la izquierda en pantallas grandes -->
     <Switches />
@@ -44,7 +49,29 @@ const InitialMode = "web";
     <Skills />
     <Certificates />
     <Proyects />
-    <footer class="text-txt mt-30 text-center">all Rights reserved 2025</footer>
+    <Experience />
+    <footer class="text-center py-6 flex justify-between mt-30 ">
+      <h4 class="text-txt text-center py-3 px-6">all Rights reserved 2025</h4>
+      <a
+        href={mailtoLink}
+        class="inline-flex items-center gap-2 text-txt font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition-colors duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+        Contact
+      </a>
+    </footer>
   </div>
 </div>
 
