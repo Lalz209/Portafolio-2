@@ -6,55 +6,105 @@ const certificates = [
     year: "2024",
     course: "CS50 Introduction to Computer Science",
     link: "https://cs50.harvard.edu/certificates/5c93c8a7-92a2-4e23-9980-67fe32de04d3",
-    summary: "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics."
+    summary:
+      "Explored the fundamentals of computer science, including algorithms, data structures, and problem-solving with C, Python, and SQL. Gained a solid foundation in programming concepts and web development basics.",
   },
 ];
 ---
 
-<div class="text-txt flex items-center mb-30 gap-3 justify-center">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="60" height="60" stroke-width="1.5">
-  <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-  <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"></path>
-  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73"></path>
-  <path d="M6 9l12 0"></path>
-  <path d="M6 12l3 0"></path>
-  <path d="M6 15l2 0"></path>
-</svg>
-<h2 id="certificates" class="text-txt text-5xl text-center  font-bold">CERTIFICATES</h2>
-</div>
-<section class="certificates flex justify-center mb-50" data-certificates={JSON.stringify(certificates)}>
-  {certificates.map((cert, index) => (
-    <div class="certificate-card w-70 bg-nvbg p-4 rounded-lg shadow-md text-center">
-      <img
-        class="certificate-thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
-        src={cert.image}
-        alt={`Certificate from ${cert.institution}`}
-        data-index={index}
-      />
-      <h3 class="text-txt mt-4">{cert.course}</h3>
-      <h3 class="text-lg font-semibold mt-2 text-txt">{cert.institution}</h3>
-      <p class="text-sm text-txt">{cert.year}</p>
-      <a href={cert.link} target="_blank" class="text-spanLink underline text-sm">View Certificate</a>
-      <p class="text-sm mt-2 text-txt">{cert.summary}</p>
-    </div>
-  ))}
+<section id="certificates-section">
+  <div class="text-txt flex items-center mb-30 gap-3 justify-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      width="60"
+      height="60"
+      stroke-width="1.5"
+    >
+      <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+      <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"></path>
+      <path
+        d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73"
+      ></path>
+      <path d="M6 9l12 0"></path>
+      <path d="M6 12l3 0"></path>
+      <path d="M6 15l2 0"></path>
+    </svg>
+    <h2 id="certificates" class="text-txt text-5xl text-center font-bold">
+      CERTIFICATES
+    </h2>
+  </div>
+  <section
+    class="certificates flex justify-center mb-50"
+    data-certificates={JSON.stringify(certificates)}
+  >
+    {
+      certificates.map((cert, index) => (
+        <div class="certificate-card w-70 bg-nvbg p-4 rounded-lg shadow-md text-center">
+          <img
+            class="certificate-thumbnail w-full h-40 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
+            src={cert.image}
+            alt={`Certificate from ${cert.institution}`}
+            data-index={index}
+          />
+          <h3 class="text-txt mt-4">{cert.course}</h3>
+          <h3 class="text-lg font-semibold mt-2 text-txt">
+            {cert.institution}
+          </h3>
+          <p class="text-sm text-txt">{cert.year}</p>
+          <a
+            href={cert.link}
+            target="_blank"
+            class="text-spanLink underline text-sm"
+          >
+            View Certificate
+          </a>
+          <p class="text-sm mt-2 text-txt">{cert.summary}</p>
+        </div>
+      ))
+    }
+  </section>
 </section>
 
-<div class="certificate-modal fixed inset-0 bg-gray-800 bg-opacity-10 hidden flex items-center justify-center z-50">
-  <div class="certificate-modal-content flex flex-col items-center bg-background p-6 rounded-lg w-full max-w-[90vw]">
-    <img class="certificate-modal-image w-full max-h-[60vh] object-contain" src="" alt="" />
+<div
+  class="certificate-modal fixed inset-0 bg-gray-800 bg-opacity-10 hidden flex items-center justify-center z-50"
+>
+  <div
+    class="certificate-modal-content flex flex-col items-center bg-background p-6 rounded-lg w-full max-w-[90vw]"
+  >
+    <img
+      class="certificate-modal-image w-full max-h-[60vh] object-contain"
+      src=""
+      alt=""
+    />
     <div class="certificate-modal-info mt-4 text-center">
       <h3 class="text-xl text-txt font-bold certificate-institution"></h3>
       <h3 class="text-xl text-txt font-semibold certificate-course"></h3>
       <p class="text-sm text-span certificate-year"></p>
-      <a href="" target="_blank" class="certificate-link text-spanLink underline text-sm">View Certificate</a>
+      <a
+        href=""
+        target="_blank"
+        class="certificate-link text-spanLink underline text-sm"
+        >View Certificate</a
+      >
       <p class="certificate-summary text-txt w-200 text-sm mt-2"></p>
     </div>
-    <button class="certificate-close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">X</button>
-    <button class="certificate-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+    <button
+      class="certificate-close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
+      >X</button
+    >
+    <button
+      class="certificate-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"
+    >
       <img src="left-arrow.svg" class="" />
     </button>
-    <button class="certificate-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
+    <button
+      class="certificate-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex"
+    >
       <img src="right-arrow.svg" class="" />
     </button>
   </div>
@@ -66,17 +116,39 @@ const certificates = [
   const certificates = JSON.parse(section.dataset.certificates ?? "[]");
   let certificateCurrentIndex = 0;
 
-  const certificateThumbnails = document.querySelectorAll(".certificate-thumbnail");
-  const certificateModal = document.querySelector(".certificate-modal") as HTMLElement;
-  const certificateModalImage = document.querySelector(".certificate-modal-image") as HTMLImageElement;
-  const certificateModalInstitution = document.querySelector(".certificate-institution") as HTMLElement;
-  const certificateModalCourse = document.querySelector(".certificate-course") as HTMLElement;
-  const certificateModalYear = document.querySelector(".certificate-year") as HTMLElement;
-  const certificateModalLink = document.querySelector(".certificate-link") as HTMLAnchorElement;
-  const certificateModalSummary = document.querySelector(".certificate-summary") as HTMLElement;
-  const certificateCloseBtn = document.querySelector(".certificate-close-btn") as HTMLButtonElement;
-  const certificatePrevBtn = document.querySelector(".certificate-prev-btn") as HTMLButtonElement;
-  const certificateNextBtn = document.querySelector(".certificate-next-btn") as HTMLButtonElement;
+  const certificateThumbnails = document.querySelectorAll(
+    ".certificate-thumbnail"
+  );
+  const certificateModal = document.querySelector(
+    ".certificate-modal"
+  ) as HTMLElement;
+  const certificateModalImage = document.querySelector(
+    ".certificate-modal-image"
+  ) as HTMLImageElement;
+  const certificateModalInstitution = document.querySelector(
+    ".certificate-institution"
+  ) as HTMLElement;
+  const certificateModalCourse = document.querySelector(
+    ".certificate-course"
+  ) as HTMLElement;
+  const certificateModalYear = document.querySelector(
+    ".certificate-year"
+  ) as HTMLElement;
+  const certificateModalLink = document.querySelector(
+    ".certificate-link"
+  ) as HTMLAnchorElement;
+  const certificateModalSummary = document.querySelector(
+    ".certificate-summary"
+  ) as HTMLElement;
+  const certificateCloseBtn = document.querySelector(
+    ".certificate-close-btn"
+  ) as HTMLButtonElement;
+  const certificatePrevBtn = document.querySelector(
+    ".certificate-prev-btn"
+  ) as HTMLButtonElement;
+  const certificateNextBtn = document.querySelector(
+    ".certificate-next-btn"
+  ) as HTMLButtonElement;
 
   if (
     !certificateModal ||
@@ -95,7 +167,9 @@ const certificates = [
 
   certificateThumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
-      certificateCurrentIndex = parseInt((thumbnail as HTMLElement).dataset.index || "0");
+      certificateCurrentIndex = parseInt(
+        (thumbnail as HTMLElement).dataset.index || "0"
+      );
       updateCertificateModal();
       certificateModal.classList.remove("hidden");
     });
@@ -126,15 +200,28 @@ const certificates = [
   function updateCertificateModal() {
     const cert = certificates[certificateCurrentIndex];
     if (certificateModalImage) certificateModalImage.src = cert.image;
-    if (certificateModalImage) certificateModalImage.alt = `Certificate from ${cert.institution}`;
-    if (certificateModalInstitution) certificateModalInstitution.textContent = cert.institution;
-    if (certificateModalCourse) certificateModalCourse.textContent = cert.course; // Corregido: "Course" a "course"
+    if (certificateModalImage)
+      certificateModalImage.alt = `Certificate from ${cert.institution}`;
+    if (certificateModalInstitution)
+      certificateModalInstitution.textContent = cert.institution;
+    if (certificateModalCourse)
+      certificateModalCourse.textContent = cert.course; // Corregido: "Course" a "course"
     if (certificateModalYear) certificateModalYear.textContent = cert.year;
     if (certificateModalLink) certificateModalLink.href = cert.link;
-    if (certificateModalLink) certificateModalLink.textContent = "View Certificate";
-    if (certificateModalSummary) certificateModalSummary.textContent = cert.summary;
+    if (certificateModalLink)
+      certificateModalLink.textContent = "View Certificate";
+    if (certificateModalSummary)
+      certificateModalSummary.textContent = cert.summary;
 
-    if (certificatePrevBtn) certificatePrevBtn.classList.toggle("hidden", certificateCurrentIndex === 0);
-    if (certificateNextBtn) certificateNextBtn.classList.toggle("hidden", certificateCurrentIndex === certificates.length - 1);
+    if (certificatePrevBtn)
+      certificatePrevBtn.classList.toggle(
+        "hidden",
+        certificateCurrentIndex === 0
+      );
+    if (certificateNextBtn)
+      certificateNextBtn.classList.toggle(
+        "hidden",
+        certificateCurrentIndex === certificates.length - 1
+      );
   }
 </script>

@@ -63,3 +63,9 @@
 
   --color-borders: #2c2c2c;
 }
+
+#navigation-compact a.active {
+  display: flex;
+  background-color: var(--color-background); 
+  border-radius: 50%; 
+}

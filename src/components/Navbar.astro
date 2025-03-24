@@ -16,17 +16,17 @@ const { modeInitial } = Astro.props;
 
 <div id="navigation-compact" class="top-1/2 transform -translate-y-1/2 w-auto fixed right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300 compact-hidden">
   <ul class="flex flex-col space-y-2">
-    <li><a class="hover:text-2nd" href="#start" class="txt=txt">
+    <li><a class="hover:text-2nd" href="#top" class="txt=txt">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
         <path d="M12 5l0 14"></path>
         <path d="M16 9l-4 -4"></path>
         <path d="M8 9l4 -4"></path>
       </svg>
     </a></li>
-    <li><a class="hover:text-2nd" href="#about-me">
+    <li><a class="hover:text-2nd" href="#about-me-section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5"> <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> </svg> 
     </a></li>
-    <li><a class="hover:text-2nd" href="#skills">
+    <li><a class="hover:text-2nd" href="#skills-section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
         <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
         <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
@@ -37,7 +37,7 @@ const { modeInitial } = Astro.props;
         <path d="M16 16l3.923 -.98"></path>
       </svg>
     </a></li>
-    <li><a class="hover:text-2nd" href="#certificates">
+    <li><a class="hover:text-2nd" href="#certificates-section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
         <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
         <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"></path>
@@ -47,14 +47,14 @@ const { modeInitial } = Astro.props;
         <path d="M6 15l2 0"></path>
       </svg>
     </a></li>
-    <li><a class="hover:text-2nd" href="#projects">
+    <li><a class="hover:text-2nd" href="#projects-section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
         <path d="M7 8l-4 4l4 4"></path>
         <path d="M17 8l4 4l-4 4"></path>
         <path d="M14 4l-4 16"></path>
       </svg>
     </a></li>  
-    <li><a class="hover:text-2nd" href="#experience">
+    <li><a class="hover:text-2nd" href="#experience-section">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
         <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
         <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
@@ -101,6 +101,8 @@ const { modeInitial } = Astro.props;
     observer.observe(container, { attributes: true, attributeFilter: ["class"] });
 
     let lastScroll = 0;
+    let timeoutId = null;
+
     window.addEventListener("scroll", () => {
       const currentScroll = window.scrollY;
 
@@ -112,14 +114,17 @@ const { modeInitial } = Astro.props;
             navigation.classList.add("hidden");
             navigationCompact.classList.remove("hidden");
             navigationCompact.classList.remove("compact-hidden");
-          }, 300);
-        } else if (currentScroll <= 150) {
-          // Scrolling up OR near the top: show top nav, hide compact nav
-          navigation.classList.remove("shrunk", "hidden");
-          navigationCompact.classList.add("hidden");
+          }, 500);
+        } else if (currentScroll <= 150 && navigation.classList.contains("hidden")) {
+          // Scrolling up to top (or near top): show top nav, hide compact nav
           navigationCompact.classList.add("compact-hidden");
-        }
+          timeoutId = setTimeout(() => {
+            navigationCompact.classList.add("hidden");
+            navigation.classList.remove("shrunk");
+            navigation.classList.remove("hidden");
+          }, 500);
       }
+    }
     });
   });
 </script>
@@ -129,11 +134,11 @@ const { modeInitial } = Astro.props;
     display: none;
   }
   .shrunk {
-    transform: scale(0.8);
+    transform: scale(0.1);
     opacity: 0;
   }
   .compact-hidden {
-    transform: scale(0.8);
+    transform: scale(0.1);
     opacity: 0;
   }
   #navigation-compact {
@@ -142,7 +147,7 @@ const { modeInitial } = Astro.props;
     transform-origin: right center;
   }
   .transition-all {
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
   }
   html {
     scroll-behavior: smooth;
