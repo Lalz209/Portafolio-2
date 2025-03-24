@@ -11,7 +11,7 @@ const certificates = [
 ];
 ---
 
-<h2 class="text-txt text-5xl text-center mb-30 font-bold">CERTIFICATES</h2>
+<h2 id="certificates" class="text-txt text-5xl text-center mb-30 font-bold">CERTIFICATES</h2>
 <section class="certificates flex justify-center mb-50" data-certificates={JSON.stringify(certificates)}>
   {certificates.map((cert, index) => (
     <div class="certificate-card w-70 bg-nvbg p-4 rounded-lg shadow-md text-center">

@@ -10,8 +10,9 @@ const experiences = [
 ];
 ---
 
-<h2 class="text-txt text-5xl text-center mb-10 font-bold">EXPERIENCE</h2>
-<section class="experience" data-experience={JSON.stringify(experiences)}>
+<section id="experience-section">
+<h2 id="experience"  class="text-txt text-5xl text-center mb-10 font-bold">EXPERIENCE</h2>
+<div class="experience" data-experience={JSON.stringify(experiences)}>
   <ol class="relative mt-16">
     {experiences.map((exp) => (
       <li class="">
@@ -39,4 +40,5 @@ const experiences = [
       </li>
     ))}
   </ol>
+</div>
 </section>
