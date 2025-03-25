@@ -6,7 +6,7 @@
   /* Tema base: Web Light (predeterminado si no hay dark-mode) */
   --font-display: "Onest Variable", "sans-serif"; 
 
-
+  --color-realbackground: #ffffff;
   --color-background: #ffffff; 
   --color-txt: #000000; 
   --color-span: #0a8659; 
@@ -24,10 +24,12 @@
 /* Modo Web Claro */
 .web {
   /* Colores base de @theme */
+  --color-realbackground: #ffffff;
 }
 
 /* Modo Web Oscuro */
 .web.dark-mode {
+  --color-realbackground: #1E1E1E;
   --color-background: #1E1E1E; /* gris oscuro */
   --color-txt: #ffffff; /* white */
   --color-span: #569cd6; /* azul claro */
@@ -44,28 +46,82 @@
 
 /* Modo CV Claro */
 .cv {
-  --color-background: #ffffff; /* white */
-  --color-txt: #000000; /* black */
-  --color-span: #0a8659; /* verde oscuro */
-  --color-2nd: #0000ff; /* heredado de web-light */
-  --color-navbartxt: #a41818; /* heredado de web-light */
-
+  --color-realbackground: #EBEFF8;
+  --color-background: #ffffff; 
+  --color-txt: #000000; 
+  --color-span: #0a8659; 
+  --color-2nd: #0000ff; 
+  --color-navbartxt: #a41818; 
+  --color-nvbg: #dddddd;
   --color-borders: #2c2c2c;
+  --color-fter: #007acc;
+  --color-spanLink: #0000ff;
+  
+  --color-bg1: #dddddd;
+  --color-bg2: #f3f3f3;
 }
+
+
+
+
 
 /* Modo CV Oscuro */
 .cv.dark-mode {
   --color-background: #1E1E1E; /* gris oscuro */
   --color-txt: #ffffff; /* white */
-  --color-span: #6A9955; /* verde oliva */
-  --color-2nd: #cc8f77; /* ejemplo, heredado de web-dark */
-  --color-navbar: #6A9955; /* ejemplo, igual a span */
-
+  --color-span: #569cd6; /* azul claro */
+  --color-2nd: #cc8f77; /* naranja suave */
+  --color-navbartxt: #6A9955;
+  --color-nvbg: #3c3c3c; /* verde oliva */
   --color-borders: #2c2c2c;
+  --color-spanLink: #dcdcaa;
+  --color-bg1: #252526;
+  --color-bg2: #3c3c3c;
 }
 
 #navigation-compact a.active {
   display: flex;
   background-color: var(--color-background); 
   border-radius: 50%; 
+}
+
+
+
+
+
+/* CV styles */
+
+.cv .pcontainer{
+  padding: 20px;
+}
+
+.cv .title{
+  padding-top: 0;
+}
+
+.cv .intro-container{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.cv .empty-top{
+  height: 30px;
+  background-color: var(--color-realbackground);
+}
+
+.cv .hey{
+  display: none;
+}
+
+.cv .available{
+  display: none;
+}
+
+.cv .profile{
+  border-radius: 0%;
+}
+
+.cv .available-effect{
+  display: none;
 }

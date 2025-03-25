@@ -87,6 +87,10 @@ const { modeInitial } = Astro.props;
       return;
     }
 
+    if(navigation.classList.contains("cv")){
+      navigation.classList.add("hidden");
+    }
+
     const observer = new MutationObserver(() => {
       if (container.classList.contains("cv")) {
         navigation.classList.add("hidden");

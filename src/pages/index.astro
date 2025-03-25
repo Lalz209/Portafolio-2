@@ -8,7 +8,7 @@ import Certificates from "../components/Certificates.astro";
 import Proyects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
 
-const InitialMode = "web";
+const InitialMode = "cv";
 const email = "palacioluismauricio@gmail.com";
 const subject = "Contact from Portfolio";
 const body = "Hi, I saw your portfolio and would like to get in touch!";
@@ -17,25 +17,27 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
 
 <div
   id="container"
-  class={`${InitialMode} bg-background min-h-screen font-display`}
+  class={`${InitialMode} bg-realbackground min-h-screen font-display`}
 >
+<div class="empty-top"></div>
   <div
-    class="section pt-16 md:py-10 scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+    class="pcontainer section bg-background scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
   >
     <!-- Switches en vertical, a la izquierda en pantallas grandes -->
     <Switches />
 
     <NavBar InitialMode={InitialMode} />
+    
     <section id="top">
       <div
         id="start"
-        class="flex flex-col justify-start items-start gap-3.5 pt-30"
+        class="title intro-container flex flex-col justify-start items-start gap-3.5 pt-30"
       >
         <div class="flex gap-x-7 ">
           
           <img
             alt="profile"
-            class="h-30 rounded-full self-start bg-bg2"
+            class="profile h-30 rounded-full self-start bg-bg2"
             src="foto2.png"
           />
           <a
@@ -44,7 +46,7 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
             rel="noopener"
             class="flex items-center transition md:justify-center md:hover:scale-105"
           >
-            <div class="flex items-center">
+            <div class="available-effect flex items-center">
               <span
                 class="relative inline-flex overflow-hidden rounded-full p-[1px]"
               >
@@ -52,7 +54,7 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
                   class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
                 ></span>
                 <div
-                  class="inline-flex items-center justify-center w-full px-3 py-1 text-sm text-span bg-background rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
+                  class="available inline-flex items-center justify-center w-full px-3 py-1 text-sm text-span bg-background rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
                 >
                   available for hire
                 </div>
@@ -60,9 +62,13 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
             </div>
           </a>
         </div>
+        <div class="name">
         <h1 id="tittle" class="flex justify-center text-5xl font-bold text-txt">
-          Hey, I am Mauricio Palacio
+          <span class="hey">Hey, I am </span>Mauricio Palacio
+          <h4 class="phone hidden text-txt">+52 9841169322</h4>
+          <h4 class="email hidden text-txt">palacioluismauricio@gmail.com</h4>
         </h1>
+      </div>
       </div>
       <h3 id="description" class="text-2xl pt-10 w-160 text-txt opacity-85">
         <span class="text-span opacity-100">Software developer</span> from Medellin,
