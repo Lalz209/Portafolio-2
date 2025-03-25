@@ -1,22 +1,22 @@
 /* styles/global.css */
 @import "tailwindcss";
-@import '@fontsource-variable/onest';
+@import "@fontsource-variable/onest";
 
 @theme {
   /* Tema base: Web Light (predeterminado si no hay dark-mode) */
-  --font-display: "Onest Variable", "sans-serif"; 
+  --font-display: "Onest Variable", "sans-serif";
 
   --color-realbackground: #ffffff;
-  --color-background: #ffffff; 
-  --color-txt: #000000; 
-  --color-span: #0a8659; 
-  --color-2nd: #0000ff; 
-  --color-navbartxt: #a41818; 
+  --color-background: #ffffff;
+  --color-txt: #000000;
+  --color-span: #0a8659;
+  --color-2nd: #0000ff;
+  --color-navbartxt: #a41818;
   --color-nvbg: #dddddd;
   --color-borders: #2c2c2c;
   --color-fter: #007acc;
   --color-spanLink: #0000ff;
-  
+
   --color-bg1: #dddddd;
   --color-bg2: #f3f3f3;
 }
@@ -29,49 +29,43 @@
 
 /* Modo Web Oscuro */
 .web.dark-mode {
-  --color-realbackground: #1E1E1E;
-  --color-background: #1E1E1E; /* gris oscuro */
+  --color-realbackground: #1e1e1e;
+  --color-background: #1e1e1e; /* gris oscuro */
   --color-txt: #ffffff; /* white */
   --color-span: #569cd6; /* azul claro */
   --color-2nd: #cc8f77; /* naranja suave */
-  --color-navbartxt: #6A9955;
+  --color-navbartxt: #6a9955;
   --color-nvbg: #3c3c3c; /* verde oliva */
   --color-borders: #2c2c2c;
   --color-spanLink: #dcdcaa;
   --color-bg1: #252526;
   --color-bg2: #3c3c3c;
-  
-  
 }
 
 /* Modo CV Claro */
 .cv {
-  --color-realbackground: #EBEFF8;
-  --color-background: #ffffff; 
-  --color-txt: #000000; 
-  --color-span: #0a8659; 
-  --color-2nd: #0000ff; 
-  --color-navbartxt: #a41818; 
+  --color-realbackground: #ebeff8;
+  --color-background: #ffffff;
+  --color-txt: #000000;
+  --color-span: #0a8659;
+  --color-2nd: #0000ff;
+  --color-navbartxt: #a41818;
   --color-nvbg: #dddddd;
   --color-borders: #2c2c2c;
   --color-fter: #007acc;
   --color-spanLink: #0000ff;
-  
+
   --color-bg1: #dddddd;
   --color-bg2: #f3f3f3;
 }
 
-
-
-
-
 /* Modo CV Oscuro */
 .cv.dark-mode {
-  --color-background: #1E1E1E; /* gris oscuro */
+  --color-background: #1e1e1e; /* gris oscuro */
   --color-txt: #ffffff; /* white */
   --color-span: #569cd6; /* azul claro */
   --color-2nd: #cc8f77; /* naranja suave */
-  --color-navbartxt: #6A9955;
+  --color-navbartxt: #6a9955;
   --color-nvbg: #3c3c3c; /* verde oliva */
   --color-borders: #2c2c2c;
   --color-spanLink: #dcdcaa;
@@ -81,47 +75,37 @@
 
 #navigation-compact a.active {
   display: flex;
-  background-color: var(--color-background); 
-  border-radius: 50%; 
+  background-color: var(--color-background);
+  border-radius: 50%;
 }
-
-
-
-
 
 /* CV styles */
 
-.cv .pcontainer{
-  padding: 20px;
-}
-
-.cv .title{
-  padding-top: 0;
-}
-
-.cv .intro-container{
-  display: flex;
-  flex-direction: row;
-
-}
-
-.cv .empty-top{
-  height: 30px;
-  background-color: var(--color-realbackground);
-}
-
-.cv .hey{
-  display: none;
-}
-
-.cv .available{
-  display: none;
-}
-
-.cv .profile{
-  border-radius: 0%;
-}
-
-.cv .available-effect{
-  display: none;
+.cv {
+  .pcontainer {
+    padding: 20px;
+  }
+  .title {
+    padding-top: 0;
+  }
+  .intro-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .empty-top {
+    height: 30px;
+    background-color: var(--color-realbackground);
+  }
+  .hey {
+    display: none;
+  }
+  .available {
+    display: none;
+  }
+  .profile {
+    border-radius: 0%;
+  }
+  .available-effect {
+    display: none;
+  }
 }
