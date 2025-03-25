@@ -1,149 +1,157 @@
 ---
-
+import React from "react";
+import ReactIcon from "./Icons/ReactIcon.astro";
+import HTMLIcon from "./Icons/HTMLIcon.astro";
+import TailwindIcon from "./Icons/TailwindIcon.astro";
+import AstroIcon from "./Icons/AstroIcon.astro";
+import SkillsIcon from "./Icons/SkillsIcon.astro";
+import CSSIcon from "./Icons/CSSIcon.astro";
+import JavascriptIcon from "./Icons/JavascriptIcon.astro";
+import NodeIcon from "./Icons/NodeIcon.astro";
+import ExpressIcon from "./Icons/ExpressIcon.astro";
+import FlaskIcon from "./Icons/FlaskIcon.astro";
+import PythonIcon from "./Icons/PythonIcon.astro";
+import MongoIcon from "./Icons/MongoIcon.astro";
+import SQLIcon from "./Icons/SQLIcon.astro";
+import JSONIcon from "./Icons/JsonIcon.astro";
+import GitIcon from "./Icons/GitIcon.astro";
 ---
 
 <section id="skills-section">
-<div id="skills" class="bg-bg flex items-center gap-y-20 flex-col mb-50">
+<div id="skills" class="skills-container bg-bg flex items-center gap-y-20 flex-col mb-50">
   <div class="text-txt flex items-center gap-3">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="60" height="60" stroke-width="1.5">
-      <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
-      <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
-      <path d="M5 8h4"></path>
-      <path d="M9 16h4"></path>
-      <path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"></path>
-      <path d="M14 9l4 -1"></path>
-      <path d="M16 16l3.923 -.98"></path>
-    </svg>
-  <h1 class="text-txt text-5xl font-bold">SKILLS</h1>
+    <SkillsIcon class="icons w-20 h-20"/>
+  <h1 class="section-title text-txt text-5xl font-bold">SKILLS</h1>
 </div>
-  <div class="flex flex-col items-center gap-y-15">
-    <h2 class="text-txt text-4xl">technologies I have worked with</h2>
-    <div class="flex flex-col items-center text-center mb-30">
-      <h3 class="text-txt text-3xl mb-25 font-bold">FRONTEND</h3>
-      <div class="grid grid-cols-3 gap-20 justify-items-center">
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="react" src="React-icon.svg.png" />
-          <h4 class="text-txt text-2xl">React</h4>
+  <div class="skills-options flex flex-col items-center gap-y-15">
+    <h2 class="skills2title text-txt text-4xl">technologies I have worked with</h2>
+    <div class="skills-details flex flex-col items-center text-center mb-30">
+      <h3 class="skills-titles text-txt text-3xl mb-25 font-bold">FRONTEND</h3>
+      <div class="skills-content grid grid-cols-3 gap-20 justify-items-center">
+        <div class="grid-item flex flex-col gap-y-5">
+          <ReactIcon class="icons w-20 h-20"/>
+         
+          <h4 class="skill-title text-txt text-2xl">React</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="astro" src="astro-seeklogo.png" />
-          <h4 class="text-txt text-2xl">Astro</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+          <AstroIcon class="icons w-20 h-20 text-txt"/>
+          <h4 class="skill-title text-txt text-2xl ">Astro</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="Tailwind" src="Tailwind_icon.png" />
-          <h4 class="text-txt text-2xl">Tailwind</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+         <TailwindIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">Tailwind</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="html" src="html-icon.svg" />
-          <h4 class="text-txt text-2xl">HTML</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+          <HTMLIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">HTML</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="css" src="CSS3_logo.png" />
-          <h4 class="text-txt text-2xl">CSS</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+          <CSSIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">CSS</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="javascript" src="javascript-icon.svg" />
-          <h4 class="text-txt text-2xl">JavaScript</h4>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col items-center text-center mb-30">
-      <h3 class="text-txt text-3xl mb-25 font-bold">BACKEND</h3>
-      <div class="grid grid-cols-2 gap-20 justify-items-center">
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="Node" src="node-icon.png" />
-          <h4 class="text-txt text-2xl">Node</h4>
-        </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="Express" src="express-js.png" />
-          <h4 class="text-txt text-2xl">Express</h4>
-        </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="Flask" src="Flask.svg" />
-          <h4 class="text-txt text-2xl">Flask</h4>
-        </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="Python" src="Python-logo.png" />
-          <h4 class="text-txt text-2xl">Python</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+          <JavascriptIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">JavaScript</h4>
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col items-center text-center mb-30">
-      <h3 class="text-txt text-3xl mb-25 font-bold">DATA BASES</h3>
-      <div class="grid grid-cols-2 gap-20 justify-items-center">
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="MongoDB" src="mongodb.svg" />
-          <h4 class="text-txt text-2xl">MongoDB</h4>
+    <div class="skills-details flex flex-col items-center text-center mb-30">
+      <h3 class="skills-titles text-txt text-3xl mb-25 font-bold">BACKEND</h3>
+      <div class="skills-content grid grid-cols-2 gap-20 justify-items-center">
+        <div class="grid-item flex flex-col gap-y-5">
+          <NodeIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">Node</h4>
         </div>
-        <div class="flex flex-col gap-y-5">
-          <img class="h-30" alt="SQL" src="sql-logo.svg" />
-          <h4 class="text-txt text-2xl">SQL</h4>
+        <div class="grid-item flex flex-col gap-y-5">
+          <ExpressIcon class="icons w-20 h-20 text-txt"/>
+          <h4 class="skill-title text-txt text-2xl">Express</h4>
+        </div>
+        <div class="grid-item flex flex-col gap-y-5">
+          <FlaskIcon class="icons w-20 h-20 text-txt"/>  
+          <h4 class="skill-title text-txt text-2xl">Flask</h4>
+        </div>
+        <div class="grid-item flex flex-col gap-y-5">
+          <PythonIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">Python</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-details flex flex-col items-center text-center mb-30">
+      <h3 class="skills-titles text-txt text-3xl mb-25 font-bold">DATA BASES</h3>
+      <div class="skills-content grid grid-cols-2 gap-20 justify-items-center">
+        <div class="grid-item flex flex-col gap-y-5">
+          <MongoIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">MongoDB</h4>
+        </div>
+        <div class="grid-item flex flex-col gap-y-5">
+          <SQLIcon class="icons w-20 h-20"/>
+          <h4 class="skill-title text-txt text-2xl">SQLite</h4>
         </div>
       </div>
       </div>
 
     <div>
-      <div class="flex flex-col items-center text-center mb-30">
-        <h3 class="text-txt text-3xl mb-25 font-bold">TOOLS</h3>
-        <div class="grid grid-cols-2 gap-20 justify-items-center">
-          <div class="flex flex-col gap-y-5">
-            <img class="h-30" alt="JSON" src="json-icon.png" />
-            <h4 class="text-txt text-2xl">JSON</h4>
+      <div class="skills-details flex flex-col items-center text-center mb-30">
+        <h3 class="skills-titles text-txt text-3xl mb-25 font-bold">TOOLS</h3>
+        <div class="skills-content grid grid-cols-2 gap-20 justify-items-center">
+          <div class="grid-item flex flex-col gap-y-5">
+            <JSONIcon class="icons w-20 h-20 text-txt"/>
+            <h4 class="skill-title text-txt text-2xl">JSON</h4>
           </div>
-          <div class="flex flex-col gap-y-5">
-            <img class="h-30" alt="GIT" src="Git_icon.svg.png" />
-            <h4 class="text-txt text-2xl">GIT</h4>
+          <div class="grid-item flex flex-col gap-y-5">
+            <GitIcon class="icons w-20 h-20"/>
+            <h4 class="skill-title text-txt text-2xl">GIT</h4>
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="container flex flex-col items-center gap-y-15">
-      <h2 class="text-txt text-5xl font-bold mb-25">PERSONAL SKILLS</h2>
-      <div class="grid grid-cols-3 gap-20">
-        <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30 text-txt" alt="pending" src="details.png" />
+    <div class="skills-details container flex flex-col items-center gap-y-15">
+      <h2 class="section-title text-txt text-5xl font-bold mb-25">PERSONAL SKILLS</h2>
+      <div class="skills-content grid grid-cols-3 gap-20">
+        <div class="grid-item flex gap-3 flex-col items-center text-center text-txt">
+          <img class="icons h-30 w-30 text-txt" alt="pending" src="details.png" />
           <h3 class="text-2xl text-txt">Attention to Detail</h3>
-          <p class="text-txt">
+          <p class="p-skills-txt">
             Meticulous in coding and debugging, ensuring high-quality,
             error-free work.
           </p>
         </div>
-        <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30" alt="Creative" src="brain.png" />
+        <div class="grid-item flex gap-3 flex-col items-center text-center text-txt">
+          <img class="icons h-30 w-30" alt="Creative" src="brain.png" />
           <h3 class="text-2xl text-txt">Creative</h3>
-          <p>
+          <p class="p-skills-txt">
             Strong analytical skills from gaming, solving coding challenges
             effectively.
           </p>
         </div>
         <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30" alt="Fast learner" src="flash.png" />
+          <img class="icons h-30 w-30" alt="Fast learner" src="flash.png" />
           <h3 class="text-2xl text-txt">Fast adapting and learning</h3>
-          <p>
+          <p class="p-skills-txt">
             Quick to learn new tech and concepts, adapting fast to project needs
           </p>
         </div>
         <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30" alt="love knowledge" src="glasses.png" />
+          <img class="icons h-30 w-30" alt="love knowledge" src="glasses.png" />
           <h3 class="text-2xl text-txt">knowledge lover</h3>
-          <p>Passionate about learning and staying current with tech trends.</p>
+          <p class="p-skills-txt">Passionate about learning and staying current with tech trends.</p>
         </div>
         <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30" alt="good teammate" src="people.png" />
+          <img class="icons h-30 w-30" alt="good teammate" src="people.png" />
           <h3 class="text-2xl text-txt text-center">good working with teams</h3>
-          <p>
+          <p class="p-skills-txt">
             Adaptable team player, thriving in group settings with strong
             communication.
           </p>
         </div>
         <div class="flex gap-3 flex-col items-center text-center text-txt">
-          <img class="h-30 w-30" alt="bilingual" src="translator.png" />
+          <img class="icons h-30 w-30" alt="bilingual" src="translator.png" />
           <h3 class="text-2xl text-txt">bilingual</h3>
-          <p>
+          <p class="p-skills-txt">
             Native Spanish speaker, fluent in written English, and advanced in
             spoken English. I communicate clearly across teams.
           </p>

@@ -17,9 +17,9 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
 
 <div
   id="container"
-  class={`${InitialMode} bg-realbackground min-h-screen font-display`}
+  class={`${InitialMode} bg-realbackground min-h-screen font-display container-father`}
 >
-<div class="empty-top"></div>
+  <div class="empty-top"></div>
   <div
     class="pcontainer section bg-background scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
   >
@@ -27,14 +27,13 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
     <Switches />
 
     <NavBar InitialMode={InitialMode} />
-    
+
     <section id="top">
       <div
         id="start"
         class="title intro-container flex flex-col justify-start items-start gap-3.5 pt-30"
       >
-        <div class="flex gap-x-7 ">
-          
+        <div class="profile-container flex gap-x-7">
           <img
             alt="profile"
             class="profile h-30 rounded-full self-start bg-bg2"
@@ -62,22 +61,60 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
             </div>
           </a>
         </div>
-        <div class="name">
-        <h1 id="tittle" class="flex justify-center text-5xl font-bold text-txt">
-          <span class="hey">Hey, I am </span>Mauricio Palacio
-          <h4 class="phone hidden text-txt">+52 9841169322</h4>
-          <h4 class="email hidden text-txt">palacioluismauricio@gmail.com</h4>
-        </h1>
+        <div class="name flex flex-col gap-2-5">
+          <h1 id="tittle" class="text-5xl font-bold text-txt">
+            <span class="hey">Hey, I am </span>Mauricio Palacio
+            <div class="phone hidden gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="24"
+                height="24"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                ></path>
+              </svg>
+              <h4 class="profile-txt text-txt text-xl">+52 9841169322</h4>
+            </div>
+            <div class="email hidden gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="24"
+                height="24"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+                ></path>
+                <path d="M3 7l9 6l9 -6"></path>
+              </svg>
+              <h4 class="profile-txt text-txt text-xl">palacioluismauricio@gmail.com</h4>
+            </div>
+          </h1>
+        </div>
       </div>
-      </div>
-      <h3 id="description" class="text-2xl pt-10 w-160 text-txt opacity-85">
+      <h3
+        id="description"
+        class="description text-2xl pt-10 w-160 text-txt opacity-85"
+      >
         <span class="text-span opacity-100">Software developer</span> from Medellin,
         Colombia, and Living in Guadalajara, Mexico. 2 years of programming training
         and currently developing web projects. I am passionate about <span
           class="text-span opacity-100">software development</span
         > and constantly evolving.
       </h3>
-      <div class="flex gap-3 pt-5">
+      <div class="job-icons flex gap-3 pt-5">
         <a
           href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
           target="_blank"
@@ -88,38 +125,46 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
         >
       </div>
     </section>
-
-    <Welcome />
-    <Skills />
+    <div class="info-section">
+      <div class="experience-component">
+        <Experience />
+      </div>
+      <div class="journey">
+        <Welcome />
+      </div>
+      <div class="skills-component">
+        <Skills />
+      </div>
+    </div>
     <Certificates />
     <Proyects />
-    <Experience />
+
     <section id="footer">
-    <footer class="text-center py-6 flex justify-between mt-30">
-      <h4 class="text-txt text-center py-3 px-6">all Rights reserved 2025</h4>
-      <a
-        href={mailtoLink}
-        class="inline-flex items-center gap-2 text-txt font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition-colors duration-300"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-5 h-5"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <footer class="text-center py-6 flex justify-between mt-30">
+        <h4 class="text-txt text-center py-3 px-6">all Rights reserved 2025</h4>
+        <a
+          href={mailtoLink}
+          class="inline-flex items-center gap-2 text-txt font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition-colors duration-300"
         >
-          <path
-            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-          ></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        Contact
-      </a>
-    </footer>
-  </section>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Contact
+        </a>
+      </footer>
+    </section>
   </div>
 </div>
 
@@ -168,33 +213,37 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
   switchDark.addEventListener("change", handleDarkChange);
   switchDarkMobile.addEventListener("change", handleDarkChange);
 
-  
   const sections = document.querySelectorAll("section");
-const navIcons = document.querySelectorAll("#navigation-compact a");
+  const navIcons = document.querySelectorAll("#navigation-compact a");
 
-console.log("Sections found:", sections);
-console.log("Nav icons found:", navIcons);
+  console.log("Sections found:", sections);
+  console.log("Nav icons found:", navIcons);
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const id = entry.target.id;
-    console.log(`Section ${id} is intersecting: ${entry.isIntersecting}, ratio: ${entry.intersectionRatio}`);
-    console.log(entries)
-    navIcons.forEach(icon => {
-      const href = icon.getAttribute("href");
-      const matches = href === `#${id}`;
-      if (matches) {
-        if (entry.isIntersecting) {
-          icon.classList.add("active");
-          console.log(`Added active to icon with href=${href}`);
-        } else {
-          icon.classList.remove("active");
-          console.log(`Removed active from icon with href=${href}`);
-        }
-      }
-    });
-  });
-}, { threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        console.log(
+          `Section ${id} is intersecting: ${entry.isIntersecting}, ratio: ${entry.intersectionRatio}`
+        );
+        console.log(entries);
+        navIcons.forEach((icon) => {
+          const href = icon.getAttribute("href");
+          const matches = href === `#${id}`;
+          if (matches) {
+            if (entry.isIntersecting) {
+              icon.classList.add("active");
+              console.log(`Added active to icon with href=${href}`);
+            } else {
+              icon.classList.remove("active");
+              console.log(`Removed active from icon with href=${href}`);
+            }
+          }
+        });
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-sections.forEach(section => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 </script>
