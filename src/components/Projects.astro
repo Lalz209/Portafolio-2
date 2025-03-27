@@ -1,23 +1,57 @@
 ---
-  import CodeIcon from "./icons/CodeIcon.astro";
-  import PythonIcon from "./icons/PythonIcon.astro";
-  import FlaskIcon from "./icons/FlaskIcon.astro";
-  import ReactIcon from "./icons/ReactIcon.astro";
-  import CSSIcon from "./icons/CSSIcon.astro";
-  import HTMLIcon from "./icons/HTMLIcon.astro";
-  import JavascriptIcon from "./icons/JavascriptIcon.astro";
-  import TailwindIcon from "./icons/TailwindIcon.astro";
-  import AstroIcon from "./icons/AstroIcon.astro";
-  import NodeIcon from "./icons/NodeIcon.astro";
-  import ExpressIcon from "./icons/ExpressIcon.astro";
-  import MongoIcon from "./icons/MongoIcon.astro";
-  import SQLIcon from "./Icons/SQLIcon.astro";
-  import JSXIcon from "./icons/JSXIcon.astro";
-  import TypeScriptIcon from "./icons/TypescriptIcon.astro";
+/**
+ * Import icon components for programming languages and technologies.
+ * Each icon is an Astro component used to visually represent the technologies used in projects.
+ */
+ import CodeIcon from "./Icons/CodeIcon.astro";
+import PythonIcon from "./Icons/PythonIcon.astro";
+import FlaskIcon from "./Icons/FlaskIcon.astro";
+import ReactIcon from "./Icons/ReactIcon.astro";
+import CSSIcon from "./Icons/CSSIcon.astro";
+import HTMLIcon from "./Icons/HTMLIcon.astro";
+import JavascriptIcon from "./Icons/JavascriptIcon.astro";
+import TailwindIcon from "./Icons/TailwindIcon.astro";
+import AstroIcon from "./Icons/AstroIcon.astro";
+import NodeIcon from "./Icons/NodeIcon.astro";
+import ExpressIcon from "./Icons/ExpressIcon.astro";
+import MongoIcon from "./Icons/MongoIcon.astro";
+import SQLIcon from "./Icons/SQLIcon.astro";
+import JSXIcon from "./Icons/JSXIcon.astro";
+import TypeScriptIcon from "./Icons/TypeScriptIcon.astro";
 
-  const languageIcons = {
-    "express": ExpressIcon,
-  "transparent.png": null,
+/**
+ * Define the possible keys for the language icons.
+ * This ensures TypeScript only allows these specific keys when accessing the `languageIcons` object.
+ */
+type LanguageIconKey =
+  | "express"
+  | "Python-logo.png"
+  | "Flask.svg"
+  | "React-icon.svg.png"
+  | "CSS3_logo.png"
+  | "html-icon.svg"
+  | "javascript-icon.svg"
+  | "Tailwind_icon.png"
+  | "astro-seeklogo.png"
+  | "node-icon.png"
+  | "mongodb.svg"
+  | "sql-logo.svg"
+  | "jsx-logo.png"
+  | "typescript-logo.png"
+  | "transparent.png";
+
+/**
+ * Generic type for an Astro component.
+ * Represents a component that accepts props and returns a renderable element.
+ */
+type AstroComponent = (props: Record<string, any>) => any;
+
+/**
+ * Object mapping language/technology names to their respective icon components.
+ * Keys are of type `LanguageIconKey`, and values are either Astro components or `null`.
+ */
+const languageIcons: Record<LanguageIconKey, AstroComponent | null> = {
+  express: ExpressIcon,
   "Python-logo.png": PythonIcon,
   "Flask.svg": FlaskIcon,
   "React-icon.svg.png": ReactIcon,
@@ -31,23 +65,35 @@
   "sql-logo.svg": SQLIcon,
   "jsx-logo.png": JSXIcon,
   "typescript-logo.png": TypeScriptIcon,
+  "transparent.png": null, // Represents an unavailable icon
 };
 
-const projects = [
+/**
+ * Interface defining the structure of a project.
+ * Each project includes images, a title, programming languages, description, status, and features.
+ */
+interface Project {
+  images: string[]; // Array of image URLs for the project
+  title: string; // Project title
+  programmingLanguages: LanguageIconKey[]; // Languages/technologies used (must match `languageIcons` keys)
+  description: string; // Project description
+  status: string; // Project status (e.g., "Finished" or "In process")
+  Features: string[]; // List of project features
+}
+
+/**
+ * Array of projects.
+ * Each project contains details such as images, languages used, description, status, and features.
+ */
+const projects: Project[] = [
   {
     images: ["/game.png", "/game1.png", "/game2.png"],
     title: "Game 1v1",
-    programmingLanguages: [
-      "transparent.png",
-      "Python-logo.png",
-    ],
+    programmingLanguages: ["transparent.png", "Python-logo.png"],
     description:
       "Game to be played on console for two players where each player selects weapon, class, and in turns select what actions wants to do until one of both dies",
     status: "Finished",
-    Features: [
-      "Select role, and weapon",
-      "Turns to make options until the other one dies",
-    ],
+    Features: ["Select role, and weapon", "Turns to make options until the other one dies"],
   },
   {
     images: ["/critics.png", "/critics1.png", "/critics2.png", "/critics3.png", "/critics4.png"],
@@ -120,22 +166,22 @@ const projects = [
     description:
       "Webpage made for my portfolio where any relevant information about myself to find a job with it can be found",
     status: "Finished",
-    Features: [
-      "Dynamic navbar",
-      "Modal",
-      "Contact via e-mail",
-      "Carousel",
-      "Filter",
-    ],
+    Features: ["Dynamic navbar", "Modal", "Contact via e-mail", "Carousel", "Filter"],
   },
 ];
 ---
 
+<!-- Projects Section -->
 <section class="projects-section" id="projects-section">
+  <!-- Section Title with Icon -->
   <div class="ptitle text-txt flex justify-center items-center gap-3 mb-10">
-    <CodeIcon class="icons2  w-20 h-20"/>
-    <h2 id="projects" class="section-title text-txt text-5xl text-center font-bold">PROJECTS</h2>
+    <CodeIcon class="icons2 w-20 h-20" />
+    <h2 id="projects" class="section-title text-txt text-5xl text-center font-bold">
+      PROJECTS
+    </h2>
   </div>
+
+  <!-- Container for Project Cards -->
   <div
     class="projects grid grid-cols-1 gap-10 mb-50 max-w-7xl mx-auto"
     data-projects={JSON.stringify(projects)}
@@ -147,33 +193,46 @@ const projects = [
             index % 2 === 0 ? "justify-self-start" : "justify-self-end"
           }`}
         >
+          <!-- Project Title -->
           <h3 class="title text-txt font-bold text-lg">{pro.title}</h3>
+          <!-- Project Status -->
           <h3 class="text-txt font-bold text-sm">
             Status: <span class="text-2nd">{pro.status}</span>
           </h3>
-          
+
+          <!-- Container for Image and Language Icons -->
           <div class="flex gap-5 w-[100%] justify-center">
+            <!-- Project Thumbnail Image -->
             <img
               src={pro.images[1] || ""}
               alt={pro.title}
               data-index={index}
               class="project-thumbnail w-50 object-fill h-32 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
             />
+            <!-- Languages Used Section -->
             <div class="items-center text-center w-[50%] flex flex-col justify-center">
-              <h3 class="languageusedt font-bold text-txt text-sm mb-5">Languages used:</h3>
+              <h3 class="languageusedt font-bold text-txt text-sm mb-5">
+                Languages used:
+              </h3>
               <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center">
-                {pro.programmingLanguages.map((leng) => {
-                  const IconComponent = languageIcons[leng];
-                  return IconComponent ? (
-                    <IconComponent class="text-txt picon h-10" />
-                  ) : null;
-                })}
+                {
+                  pro.programmingLanguages.map((leng) => {
+                    const IconComponent = languageIcons[leng];
+                    return IconComponent ? (
+                      <IconComponent class="text-txt picon h-10" />
+                    ) : null;
+                  })
+                }
               </div>
             </div>
           </div>
-          
-          <p class="pdescription text-txt text-sm line-clamp-2 text-center">{pro.description}</p>
 
+          <!-- Project Description -->
+          <p class="pdescription text-txt text-sm line-clamp-2 text-center">
+            {pro.description}
+          </p>
+
+          <!-- Project Features -->
           <div class="pfeat w-[100%] flex flex-col items-center gap-5">
             <h3 class="font-bold text-txt text-sm">Features</h3>
             <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center text-span">
@@ -188,48 +247,98 @@ const projects = [
   </div>
 </section>
 
+<!-- Modal for Displaying Project Details -->
 <div class="project-modal fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center z-50">
   <div class="project-modal-content flex flex-col items-center bg-background p-6 rounded-lg h-[90vh] w-full max-w-[90vw]">
+    <!-- Project Title in Modal -->
     <h2 class="project-modal-title text-txt text-3xl mb-4"></h2>
+    <!-- Main Image Container -->
     <div class="project-modal-main-image-container w-full h-[70%] overflow-auto items-center mb-10">
-      <img class="project-modal-main-image flex justify-self-center" src="" alt="" />
+      <img
+        class="project-modal-main-image flex justify-self-center"
+        src=""
+        alt=""
+      />
     </div>
+    <!-- Thumbnails for Project Images -->
     <div class="project-modal-thumbnails flex gap-2 mt-4 overflow-x-auto">
-      <!-- Las miniaturas se añadirán dinámicamente con JS -->
+      <!-- Thumbnails will be added dynamically via JavaScript -->
     </div>
+    <!-- Close Button for Modal -->
     <button class="project-close-btn absolute top-4 right-4 bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer">
       X
     </button>
+    <!-- Previous Project Button -->
     <button class="project-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
       <img src="left-arrow.svg" class="" />
     </button>
+    <!-- Next Project Button -->
     <button class="project-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-white rounded-full w-8 h-8 hidden cursor-pointer flex">
       <img src="right-arrow.svg" class="" />
     </button>
   </div>
 </div>
 
+<!-- Script for Handling Modal Interactivity and Thumbnails -->
 <script>
+  /**
+   * Interface defining the structure of a project.
+   * This is redefined here because the `<script>` section in Astro runs in a separate client-side context
+   * and cannot access types defined in the frontmatter.
+   */
+  interface Project {
+    images: string[]; // Array of image URLs for the project
+    title: string; // Project title
+    programmingLanguages: string[]; // Languages/technologies used
+    description: string; // Project description
+    status: string; // Project status (e.g., "Finished" or "In process")
+    Features: string[]; // List of project features
+  }
+
+  /**
+   * Select DOM elements required for interactivity.
+   */
   const section = document.querySelector(".projects") as HTMLElement | null;
   if (!section) throw new Error("Element .projects was not found");
-  const projects = JSON.parse(section.dataset.projects ?? "[]");
-  let projectCurrentIndex = 0;
-  let projectCurrentImageIndex = 0;
 
+  // Parse the projects data from the data-projects attribute
+  const projects: Project[] = JSON.parse(section.dataset.projects ?? "[]");
+  let projectCurrentIndex = 0; // Index of the current project
+  let projectCurrentImageIndex = 0; // Index of the current image within the project
+
+  // Select modal elements
   const projectThumbnails = document.querySelectorAll(".project-thumbnail");
   const projectModal = document.querySelector(".project-modal") as HTMLElement;
-  const projectModalMainImage = document.querySelector(".project-modal-main-image") as HTMLImageElement;
-  const projectModalThumbnails = document.querySelector(".project-modal-thumbnails") as HTMLDivElement;
-  const projectModalTitle = document.querySelector(".project-modal-title") as HTMLElement;
-  const projectCloseBtn = document.querySelector(".project-close-btn") as HTMLButtonElement;
-  const projectPrevBtn = document.querySelector(".project-prev-btn") as HTMLButtonElement;
-  const projectNextBtn = document.querySelector(".project-next-btn") as HTMLButtonElement;
+  const projectModalMainImage = document.querySelector(
+    ".project-modal-main-image"
+  ) as HTMLImageElement;
+  const projectModalThumbnails = document.querySelector(
+    ".project-modal-thumbnails"
+  ) as HTMLDivElement;
+  const projectModalTitle = document.querySelector(
+    ".project-modal-title"
+  ) as HTMLElement;
+  const projectCloseBtn = document.querySelector(
+    ".project-close-btn"
+  ) as HTMLButtonElement;
+  const projectPrevBtn = document.querySelector(
+    ".project-prev-btn"
+  ) as HTMLButtonElement;
+  const projectNextBtn = document.querySelector(
+    ".project-next-btn"
+  ) as HTMLButtonElement;
 
+  /**
+   * Add interactivity to project thumbnails.
+   * On hover, rotate through the project images automatically.
+   * On click, open the modal with project details.
+   */
   projectThumbnails.forEach((thumbnail) => {
     let intervalId: number | null = null;
     const index = parseInt((thumbnail as HTMLElement).dataset.index || "0");
     const projectImages = projects[index].images || [];
 
+    // Rotate images on hover
     thumbnail.addEventListener("mouseenter", () => {
       if (projectImages.length > 1) {
         let imgIndex = 0;
@@ -240,6 +349,7 @@ const projects = [
       }
     });
 
+    // Stop rotation on mouse leave
     thumbnail.addEventListener("mouseleave", () => {
       if (intervalId) {
         clearInterval(intervalId);
@@ -248,6 +358,7 @@ const projects = [
       (thumbnail as HTMLImageElement).src = projectImages[1] || "";
     });
 
+    // Open modal on click
     thumbnail.addEventListener("click", () => {
       projectCurrentIndex = index;
       projectCurrentImageIndex = 0;
@@ -256,14 +367,17 @@ const projects = [
     });
   });
 
+  // Close modal when clicking outside the content
   projectModal.addEventListener("click", (e) => {
     if (e.target === projectModal) projectModal.classList.add("hidden");
   });
 
+  // Close modal when clicking the close button
   projectCloseBtn.addEventListener("click", () => {
     projectModal.classList.add("hidden");
   });
 
+  // Navigate to the previous project
   projectPrevBtn.addEventListener("click", () => {
     if (projectCurrentIndex > 0) {
       projectCurrentIndex--;
@@ -272,6 +386,7 @@ const projects = [
     }
   });
 
+  // Navigate to the next project
   projectNextBtn.addEventListener("click", () => {
     if (projectCurrentIndex < projects.length - 1) {
       projectCurrentIndex++;
@@ -280,19 +395,28 @@ const projects = [
     }
   });
 
+  /**
+   * Update the modal content with the current project's information.
+   * Displays the title, main image, thumbnails, and navigation buttons.
+   */
   function updateProjectModal() {
     const project = projects[projectCurrentIndex];
 
+    // Update modal title
     if (projectModalTitle) {
       projectModalTitle.textContent = project.title;
     }
 
+    // Update main image
     if (projectModalMainImage) {
       const images = project.images || [];
       projectModalMainImage.src = images[projectCurrentImageIndex] || "";
-      projectModalMainImage.alt = `${project.title} screenshot ${projectCurrentImageIndex + 1}`;
+      projectModalMainImage.alt = `${project.title} screenshot ${
+        projectCurrentImageIndex + 1
+      }`;
     }
 
+    // Update thumbnails
     if (projectModalThumbnails) {
       projectModalThumbnails.innerHTML = "";
       const images = project.images || [];
@@ -300,7 +424,8 @@ const projects = [
         const thumb = document.createElement("img");
         thumb.src = imgSrc;
         thumb.alt = `${project.title} thumbnail ${index + 1}`;
-        thumb.className = "w-16 h-16 object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500";
+        thumb.className =
+          "w-16 h-16 object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500";
         thumb.addEventListener("click", () => {
           projectCurrentImageIndex = index;
           updateProjectModal();
@@ -309,11 +434,15 @@ const projects = [
       });
     }
 
+    // Show or hide navigation buttons
     if (projectPrevBtn) {
       projectPrevBtn.classList.toggle("hidden", projectCurrentIndex === 0);
     }
     if (projectNextBtn) {
-      projectNextBtn.classList.toggle("hidden", projectCurrentIndex === projects.length - 1);
+      projectNextBtn.classList.toggle(
+        "hidden",
+        projectCurrentIndex === projects.length - 1
+      );
     }
   }
 </script>
