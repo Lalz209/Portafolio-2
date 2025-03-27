@@ -87,10 +87,15 @@
 
   .pcontainer {
     height: 1480px;
+    position: relative;
   }
   .title {
     padding-top: 0;
     align-items: center;
+  }
+
+  .name{
+    margin-bottom: 20px;
   }
 
   .profile-txt {
@@ -113,11 +118,18 @@
   }
   .profile-container {
     width: 30%;
+    
   }
   .profile {
     border-radius: 0%;
     width: 300px;
     height: 300px;
+  background-color: #0a0a0a;
+  background-image: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(120, 119, 198, 0.3),
+    rgba(255, 255, 255, 0)
+  );
   }
   .available-effect {
     display: none;
@@ -139,15 +151,22 @@
     font-size: 1.2em;
     margin-bottom: 30px;
     position: absolute;
-    left: 920px;
-    width: 600px;
+    left: 401px;
+    width: 522px;
   }
   .info-section {
     display: flex;
-    position: relative
+    position: relative;
+    width: 100%;
+  
   }
   .journey {
     display: none;
+  }
+
+  .icons2{
+    width: 20px;
+    height: 20px;
   }
 
   /* SKILLS */
@@ -175,7 +194,7 @@
   .section-title {
     font-size: 1.2rem;
     margin-bottom: 0;
-    font-weight: normal;
+    font-weight: bold;
   }
   .grid-item {
     padding-top: 10px;
@@ -187,14 +206,17 @@
     font-weight: normal;
   }
   .titles-container {
-    margin-bottom: 10px;
+    
+    margin-bottom: 30px;
   }
 
   .skill-title {
     font-size: 1.1rem;
   }
   .skills-content {
-    gap: 3px;
+    gap: 30px 5px;
+    margin-bottom: 50px;
+    
   }
   .skills-content2 {
     gap: 3px;
@@ -208,6 +230,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
+    gap: 30px;
   }
   .icons {
     width: 20px;
@@ -220,7 +243,15 @@
   }
 
   /*experience*/
+
+  .experience{
+    position: relative;
+    left: 0px;
+    top: 30px;
+  }
+
   .edescription {
+    width: 464px;
     right: 100px;
   }
   .line,
@@ -233,7 +264,7 @@
     width: 70%;
     order: 2;
     position: absolute;
-    top: 220px;
+    top: 152px;
     left: 300px;
     
   }
@@ -245,7 +276,7 @@
   /*education*/
   .ptitle {
     width: 220px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     position: absolute;
     left: 220px;
     bottom: 15px;
@@ -253,9 +284,9 @@
   }
   .csection {
     position: absolute;
-    top: 760px;
+    top: 679px;
     width: 792px;
-    left: 800px;
+    left: 270px;
   }
   .certificate-card {
     width: 670px;
@@ -282,8 +313,8 @@
 
   .projects-section {
     position: absolute;
-    top: 1080px;
-    left: 860px;
+    top: 1049px;
+    left: 335px;
   }
 
   .projects {
