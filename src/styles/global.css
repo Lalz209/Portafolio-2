@@ -16,16 +16,22 @@
   --color-borders: #2c2c2c;
   --color-fter: #007acc;
   --color-spanLink: #0000ff;
+  --color-skbg: #0000ff2b;
 
   --color-bg1: #dddddd;
-  --color-bg2: #f3f3f3;
+  --color-bg2: #ffffff;
+  --bg2-gradient: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0))
 }
 
 /* Modo Web Claro */
 .web {
   /* Colores base de @theme */
   --color-realbackground: #ffffff;
+  --color-bg2: #ffffff;
+  --bg2-gradient: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0));
+  --color-skbg: #0000ff2b;
 }
+
 
 /* Modo Web Oscuro */
 .web.dark-mode {
@@ -39,7 +45,8 @@
   --color-borders: #2c2c2c;
   --color-spanLink: #dcdcaa;
   --color-bg1: #252526;
-  --color-bg2: #3c3c3c;
+  --color-bg2: #161515;
+  --color-skbg: #0000ff2b;
 }
 
 /* Modo CV Claro */
@@ -57,6 +64,7 @@
 
   --color-bg1: #dddddd;
   --color-bg2: #f3f3f3;
+  --color-skbg: #0b0bf52b;
 }
 
 /* Modo CV Oscuro */
@@ -70,13 +78,50 @@
   --color-borders: #2c2c2c;
   --color-spanLink: #dcdcaa;
   --color-bg1: #252526;
-  --color-bg2: #3c3c3c;
+  --color-bg2: #161515;
+  --color-skbg: #0000ff2b;
 }
 
 #navigation-compact a.active {
   display: flex;
   background-color: var(--color-background);
   border-radius: 50%;
+}
+
+.web.dark-mode{
+  .profile{
+    background-color: var(--color-bg2);
+    background-image: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgba(120, 119, 198, 0.3),
+      rgba(255, 255, 255, 0)
+    );
+  }
+}
+
+.cv.dark-mode{
+  .profile{
+    background-color: var(--color-bg2);
+    background-image: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgba(120, 119, 198, 0.3),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  .skills-component{
+    background-color: #0000ff2b;
+  }
+}
+
+.web{
+  .expt{
+    margin-top: 120px;
+  }
+  .profile{
+    background-color: var(--color-bg2);
+    background-image: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0)
+    );
+  }
 }
 
 /* CV styles */
@@ -119,17 +164,14 @@
   .profile-container {
     width: 30%;
     
+    
   }
   .profile {
     border-radius: 0%;
     width: 300px;
     height: 300px;
-  background-color: #0a0a0a;
-  background-image: radial-gradient(
-    ellipse 80% 80% at 50% -20%,
-    rgba(120, 119, 198, 0.3),
-    rgba(255, 255, 255, 0)
-  );
+    background-color: #ffffff;
+    background-image: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0))
   }
   .available-effect {
     display: none;
@@ -177,7 +219,7 @@
     position: absolute;
     
     
-    background-color: #0000ff2b;
+    background-color: #dddddd;
   }
   .skills-container {
     gap: 20px;
@@ -203,7 +245,8 @@
   .skills-titles {
     margin-bottom: 10px;
     font-size: 1rem;
-    font-weight: normal;
+    
+    color: var(--color-navbartxt);
   }
   .titles-container {
     

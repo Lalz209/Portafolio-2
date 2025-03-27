@@ -11,7 +11,7 @@ import PhoneIcon from "../components/Icons/PhoneIcon.astro";
 import EmailIcon from "../components/Icons/EmailIcon.astro";
 import WebIcon from "../components/Icons/WebIcon.astro";
 
-const InitialMode = "cv";
+const InitialMode = "web";
 const email = "palacioluismauricio@gmail.com";
 const subject = "Contact from Portfolio";
 const body = "Hi, I saw your portfolio and would like to get in touch!";
@@ -27,9 +27,9 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
     class="pcontainer section bg-background scroll-m-20 w-[1300px] mx-auto container lg:max-w-5xl md:max-w-2xl"
   >
     <!-- Switches en vertical, a la izquierda en pantallas grandes -->
-   <!--  <Switches />
+    <Switches />
 
-    <NavBar InitialMode={InitialMode} />-->
+    <NavBar InitialMode={InitialMode} />
 
     <section id="top">
       <div
