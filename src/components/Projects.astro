@@ -1,4 +1,38 @@
 ---
+  import CodeIcon from "./icons/CodeIcon.astro";
+  import PythonIcon from "./icons/PythonIcon.astro";
+  import FlaskIcon from "./icons/FlaskIcon.astro";
+  import ReactIcon from "./icons/ReactIcon.astro";
+  import CSSIcon from "./icons/CSSIcon.astro";
+  import HTMLIcon from "./icons/HTMLIcon.astro";
+  import JavascriptIcon from "./icons/JavascriptIcon.astro";
+  import TailwindIcon from "./icons/TailwindIcon.astro";
+  import AstroIcon from "./icons/AstroIcon.astro";
+  import NodeIcon from "./icons/NodeIcon.astro";
+  import ExpressIcon from "./icons/ExpressIcon.astro";
+  import MongoIcon from "./icons/MongoIcon.astro";
+  import SQLIcon from "./Icons/SQLIcon.astro";
+  import JSXIcon from "./icons/JSXIcon.astro";
+  import TypeScriptIcon from "./icons/TypescriptIcon.astro";
+
+  const languageIcons = {
+    "express": ExpressIcon,
+  "transparent.png": null,
+  "Python-logo.png": PythonIcon,
+  "Flask.svg": FlaskIcon,
+  "React-icon.svg.png": ReactIcon,
+  "CSS3_logo.png": CSSIcon,
+  "html-icon.svg": HTMLIcon,
+  "javascript-icon.svg": JavascriptIcon,
+  "Tailwind_icon.png": TailwindIcon,
+  "astro-seeklogo.png": AstroIcon,
+  "node-icon.png": NodeIcon,
+  "mongodb.svg": MongoIcon,
+  "sql-logo.svg": SQLIcon,
+  "jsx-logo.png": JSXIcon,
+  "typescript-logo.png": TypeScriptIcon,
+};
+
 const projects = [
   {
     images: ["/game.png", "/game1.png", "/game2.png"],
@@ -43,7 +77,7 @@ const projects = [
       "React-icon.svg.png",
       "mongodb.svg",
       "javascript-icon.svg",
-      "CSS3_logo.png",
+      "express",
       "html-icon.svg",
       "node-icon.png",
     ],
@@ -53,14 +87,14 @@ const projects = [
     Features: ["Comment", "See opinions", "Pagination", "Carousel", "Filter"],
   },
   {
-    images: ["/wedding.png","/wedding1.png"],
+    images: ["/wedding.png", "/wedding1.png"],
     title: "Wedding Landing Page",
     programmingLanguages: [
       "javascript-icon.svg",
       "html-icon.svg",
       "jsx-logo.png",
       "CSS3_logo.png",
-      "React-icon.svg.png"
+      "React-icon.svg.png",
     ],
     description:
       "Webpage made for a wedding with different features like send confirmation via e-mail",
@@ -70,7 +104,6 @@ const projects = [
       "connected to google sheet",
       "carousel",
       "time in reverse until weeding date",
-
     ],
   },
   {
@@ -81,10 +114,8 @@ const projects = [
       "javascript-icon.svg",
       "Tailwind_icon.png",
       "html-icon.svg",
-      "node-icon.png",
       "typescript-logo.png",
       "transparent.png",
-      "jsx-logo.png",
     ],
     description:
       "Webpage made for my portfolio where any relevant information about myself to find a job with it can be found",
@@ -100,69 +131,61 @@ const projects = [
 ];
 ---
 
-<section id="projects-section">
-  <div class="text-txt flex justify-center items-center gap-3 mb-10">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="60" height="60" stroke-width="1.5">
-    <path d="M7 8l-4 4l4 4"></path>
-    <path d="M17 8l4 4l-4 4"></path>
-    <path d="M14 4l-4 16"></path>
-  </svg>
-<h2 id="projects" class="text-txt text-5xl text-center  font-bold">PROJECTS</h2>
-</div>
-<div
-  class="projects grid grid-cols-1 gap-10 mb-50 max-w-7xl mx-auto"
-  data-projects={JSON.stringify(projects)}
->
-  {
-    projects.map((pro, index) => (
-      <div
-        class={`project-card bg-nvbg rounded-lg p-6 shadow-md w-[80%] h-80 flex flex-col gap-3 items-center md:h-auto ${
-          index % 2 === 0 ? "justify-self-start" : "justify-self-end"
-        }`}
-      >
-        <h3 class="title text-txt font-bold text-lg">{pro.title}</h3>
-        <h3 class="text-txt font-bold text-sm">
-          Status: <span class="text-2nd">{pro.status}</span>
-        </h3>
-        
-        <div class="flex gap-5 w-[100%] justify-center">
-          <img
-          src={pro.images[1] || ""}
-          alt={pro.title}
-          data-index={index}
-          class="project-thumbnail w-50 object-fill h-32 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
-        />
-        <div class="items-center text-center w-[50%] flex flex-col justify-center">
-        <h3 class="font-bold text-txt text-sm mb-5">Languages used:</h3>
-        <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center">
-          {pro.programmingLanguages.map((leng) => (
-            <img class="h-10" src={leng} alt="language used"/>
-          ))}
-        </div>
-      </div>
-        
-        </div>
-        
-        
-        <p class="text-txt text-sm line-clamp-2 text-center">{pro.description}</p>
+<section class="projects-section" id="projects-section">
+  <div class="ptitle text-txt flex justify-center items-center gap-3 mb-10">
+    <CodeIcon class="icons w-20 h-20"/>
+    <h2 id="projects" class="section-title text-txt text-5xl text-center font-bold">PROJECTS</h2>
+  </div>
+  <div
+    class="projects grid grid-cols-1 gap-10 mb-50 max-w-7xl mx-auto"
+    data-projects={JSON.stringify(projects)}
+  >
+    {
+      projects.map((pro, index) => (
+        <div
+          class={`project-card bg-nvbg rounded-lg p-6 shadow-md w-[80%] h-80 flex flex-col gap-3 items-center md:h-auto ${
+            index % 2 === 0 ? "justify-self-start" : "justify-self-end"
+          }`}
+        >
+          <h3 class="title text-txt font-bold text-lg">{pro.title}</h3>
+          <h3 class="text-txt font-bold text-sm">
+            Status: <span class="text-2nd">{pro.status}</span>
+          </h3>
+          
+          <div class="flex gap-5 w-[100%] justify-center">
+            <img
+              src={pro.images[1] || ""}
+              alt={pro.title}
+              data-index={index}
+              class="project-thumbnail w-50 object-fill h-32 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
+            />
+            <div class="items-center text-center w-[50%] flex flex-col justify-center">
+              <h3 class="languageusedt font-bold text-txt text-sm mb-5">Languages used:</h3>
+              <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center">
+                {pro.programmingLanguages.map((leng) => {
+                  const IconComponent = languageIcons[leng];
+                  return IconComponent ? (
+                    <IconComponent class="text-txt picon h-10" />
+                  ) : null;
+                })}
+              </div>
+            </div>
+          </div>
+          
+          <p class="pdescription text-txt text-sm line-clamp-2 text-center">{pro.description}</p>
 
-        
-         
-
-        <div class="w-[100%] flex flex-col items-center gap-5">
-        <h3 class="font-bold text-txt text-sm">Features</h3>
-        <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center text-span">
-          {pro.Features.map((fea) => (
-            <span>{fea}</span>
-          ))}
+          <div class="pfeat w-[100%] flex flex-col items-center gap-5">
+            <h3 class="font-bold text-txt text-sm">Features</h3>
+            <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center text-span">
+              {pro.Features.map((fea) => (
+                <span>{fea}</span>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-
-      
-    ))
-  }
-</div>
+      ))
+    }
+  </div>
 </section>
 
 <div class="project-modal fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center z-50">

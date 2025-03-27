@@ -7,6 +7,9 @@ import Skills from "../components/Skills.astro";
 import Certificates from "../components/Certificates.astro";
 import Proyects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
+import PhoneIcon from "../components/Icons/PhoneIcon.astro";
+import EmailIcon from "../components/Icons/EmailIcon.astro";
+import WebIcon from "../components/Icons/WebIcon.astro";
 
 const InitialMode = "cv";
 const email = "palacioluismauricio@gmail.com";
@@ -19,14 +22,14 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
   id="container"
   class={`${InitialMode} bg-realbackground min-h-screen font-display container-father`}
 >
-  <div class="empty-top"></div>
+  <!--<div class="empty-top"></div> -->
   <div
-    class="pcontainer section bg-background scroll-m-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl"
+    class="pcontainer section bg-background scroll-m-20 w-[1300px] mx-auto container lg:max-w-5xl md:max-w-2xl"
   >
     <!-- Switches en vertical, a la izquierda en pantallas grandes -->
-    <Switches />
+   <!--  <Switches />
 
-    <NavBar InitialMode={InitialMode} />
+    <NavBar InitialMode={InitialMode} />-->
 
     <section id="top">
       <div
@@ -37,7 +40,7 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
           <img
             alt="profile"
             class="profile h-30 rounded-full self-start bg-bg2"
-            src="foto2.png"
+            src="picturebg2.png"
           />
           <a
             href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
@@ -65,41 +68,16 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
           <h1 id="tittle" class="text-5xl font-bold text-txt">
             <span class="hey">Hey, I am </span>Mauricio Palacio
             <div class="phone hidden gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                width="24"
-                height="24"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
-                ></path>
-              </svg>
+              <PhoneIcon />
               <h4 class="profile-txt text-txt text-xl">+52 9841169322</h4>
             </div>
             <div class="email hidden gap-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                width="24"
-                height="24"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-                ></path>
-                <path d="M3 7l9 6l9 -6"></path>
-              </svg>
+             <EmailIcon />
               <h4 class="profile-txt text-txt text-xl">palacioluismauricio@gmail.com</h4>
+            </div>
+            <div class="web hidden gap-3">
+              <WebIcon />
+              <h4 class="profile-txt text-txt text-xl">www.mauriciopalacio.dev</h4>
             </div>
           </h1>
         </div>

@@ -82,19 +82,18 @@
 /* CV styles */
 
 .cv {
-  .container-father{
-    
+  .container-father {
   }
 
   .pcontainer {
-    
+    height: 1480px;
   }
   .title {
     padding-top: 0;
     align-items: center;
   }
 
-  .profile-txt{
+  .profile-txt {
     font-weight: normal;
   }
 
@@ -112,111 +111,226 @@
   .available {
     display: none;
   }
-  .profile-container{
+  .profile-container {
     width: 30%;
   }
   .profile {
     border-radius: 0%;
-    width: 100%;
+    width: 300px;
     height: 300px;
   }
   .available-effect {
     display: none;
   }
-  .phone{
+  .phone {
     display: flex;
   }
-  .email{
+  .email {
     display: flex;
   }
-  .job-icons{
+  .web {
+    display: flex;
+  }
+  .job-icons {
     display: none;
   }
-  .description{
+  .description {
     padding-top: 20px;
     font-size: 1.2em;
     margin-bottom: 30px;
-    position: relative;
-    left: 300px;
-    width: 60%;
+    position: absolute;
+    left: 920px;
+    width: 600px;
   }
-  .info-section{
+  .info-section {
     display: flex;
+    position: relative
   }
-  .journey{
+  .journey {
     display: none;
-  }
-
-  /* EXPERIENCE */
-  .experience-component{
-    width: 70%;
-    order: 2;
   }
 
   /* SKILLS */
-  .skills-component{
+  .skills-component {
     padding-top: 15px;
-    width: 29.6%;
+    width: 300px;
     order: 1;
-    position: relative;
-    top: -154px;
+    position: absolute;
     
-    box-shadow: 1px 0 2px 0 var(--color-txt);
+    
+    background-color: #0000ff2b;
   }
-  .skills-container{
+  .skills-container {
+    gap: 20px;
+    margin-bottom: 0;
+    height: 1166px;
+  }
+  .skills-options {
     gap: 20px;
   }
-  .skills-options{
-    gap: 20px;
-  }
-  .skills-details{
+  .skills-details {
     margin-bottom: 20px;
     gap: 0;
   }
-  .section-title{
+  .section-title {
     font-size: 1.2rem;
     margin-bottom: 0;
+    font-weight: normal;
   }
-  .grid-item{
+  .grid-item {
     padding-top: 10px;
     align-items: center;
   }
-  .skills-titles{
-    margin-bottom: 20px;
+  .skills-titles {
+    margin-bottom: 10px;
     font-size: 1rem;
-  
+    font-weight: normal;
   }
-  .titles-container{
+  .titles-container {
     margin-bottom: 10px;
   }
-  .line{
-    
-  }
-  .skill-title{
+
+  .skill-title {
     font-size: 1.1rem;
   }
-  .skills-content{
-    gap:3px;
+  .skills-content {
+    gap: 3px;
   }
-  .skills-content2{
-    gap:3px;
+  .skills-content2 {
+    gap: 3px;
     display: flex;
     flex-direction: column;
   }
-  .skills2title{
+  .skills2title {
     display: none;
   }
-  .skills-details{
+  .skills-details {
     display: flex;
     flex-direction: column;
+    margin-bottom: 5px;
   }
-  .icons{
+  .icons {
     width: 20px;
     height: 20px;
-  }
-
-  .p-skills-txt{
     display: none;
   }
 
+  .p-skills-txt {
+    display: none;
+  }
+
+  /*experience*/
+  .edescription {
+    right: 100px;
+  }
+  .line,
+  .relative::before {
+    border-left: none;
+    content: none;
+    display: none;
+  }
+  .experience-component {
+    width: 70%;
+    order: 2;
+    position: absolute;
+    top: 220px;
+    left: 300px;
+    
+  }
+  .descriptionexp{
+    
+    bottom: 55px;
+  }
+
+  /*education*/
+  .ptitle {
+    width: 220px;
+    margin-bottom: 12px;
+    position: absolute;
+    left: 220px;
+    bottom: 15px;
+
+  }
+  .csection {
+    position: absolute;
+    top: 760px;
+    width: 792px;
+    left: 800px;
+  }
+  .certificate-card {
+    width: 670px;
+  }
+  .certificate-thumbnail {
+    position: absolute;
+    width: 141px;
+    height: 108px;
+  }
+
+  /*projects*/
+  .projects {
+    width: 673px;
+  }
+  .project-card {
+    width: 219px;
+    height: 180px;
+    padding: 5px;
+    gap: 0;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .projects-section {
+    position: absolute;
+    top: 1080px;
+    left: 860px;
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    width: 670px;
+    position: absolute;
+    
+    gap: 5px;
+  }
+  .psubtitle {
+    font-size: 0.6rem;
+  }
+  .project-thumbnail {
+    width: 60px;
+    height: 50px;
+  }
+  .project-thumbnail:hover{
+    scale: 3;
+    transition: 300ms;
+  }
+  .pfeat {
+    display: none;
+  }
+  .languaget {
+    font-size: 0.6rem;
+  }
+  .picon {
+    height: 20px;
+  }
+  .languageusedt {
+    display: none;
+  }
+  .pdescription {
+    margin-top: 5px;
+    font-size: 0.6rem;
+    overflow: visible;
+    display: block;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: unset;
+  }
+  .project-card:hover{
+    scale: 1.5;
+    transition: 300ms;
+   
+  }
+  footer{
+    display: none;
+  }
 }
