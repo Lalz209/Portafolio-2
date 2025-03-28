@@ -10,8 +10,9 @@ import Experience from "../components/Experience.astro";
 import PhoneIcon from "../components/Icons/PhoneIcon.astro";
 import EmailIcon from "../components/Icons/EmailIcon.astro";
 import WebIcon from "../components/Icons/WebIcon.astro";
-import Layout from '../layouts/Layout.astro';
-
+import Layout from "../layouts/Layout.astro";
+import GitHub from "../components/Icons/GitHub.astro";
+import LinkeIn from "../components/Icons/LinkeIn.astro";
 
 const InitialMode = "web";
 const email = "palacioluismauricio@gmail.com";
@@ -21,138 +22,140 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
 ---
 
 <Layout title="Mauricio Palacio Dev - Software developer portfolio">
-<div
-  id="container"
-  class={`${InitialMode} bg-realbackground min-h-screen font-display container-father`}
->
-
-  <!--<div class="empty-top"></div> -->
   <div
-    class="pcontainer section bg-background scroll-m-20 w-[1300px] mx-auto container lg:max-w-5xl md:max-w-2xl"
+    id="container"
+    class={`${InitialMode} bg-realbackground min-h-screen font-display container-father`}
   >
-    <!-- Switches en vertical, a la izquierda en pantallas grandes -->
-    <Switches />
+    <!--<div class="empty-top"></div> -->
+    <div
+      class="pcontainer section bg-background scroll-m-20 w-[1300px] mx-auto container lg:max-w-5xl md:max-w-2xl"
+    >
+      <!-- Switches en vertical, a la izquierda en pantallas grandes -->
+      <Switches />
 
-    <NavBar InitialMode={InitialMode} />
+      <NavBar InitialMode={InitialMode} />
 
-    <section id="top">
-      <div
-        id="start"
-        class="title intro-container flex flex-col justify-start items-start gap-3.5 pt-30"
-      >
-        <div class="profile-container flex gap-x-7">
-          <img
-            alt="profile"
-            class="profile h-30 rounded-full self-start bg-bg2"
-            src="picturebg2.png"
-          />
-          <a
-            href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
-            target="_blank"
-            rel="noopener"
-            class="flex items-center transition md:justify-center md:hover:scale-105"
-          >
-            <div class="available-effect flex items-center">
-              <span
-                class="relative inline-flex overflow-hidden rounded-full p-[1px]"
-              >
+      <section id="top">
+        <div
+          id="start"
+          class="title intro-container flex flex-col justify-start items-start gap-3.5 pt-30"
+        >
+          <div class="profile-container flex gap-x-7">
+            <img
+              alt="profile"
+              class="profile h-30 rounded-full self-start bg-bg2"
+              src="picturebg2.webp"
+            />
+            <a
+              href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
+              target="_blank"
+              rel="noopener"
+              class="flex items-center transition md:justify-center md:hover:scale-105"
+            >
+              <div class="available-effect flex items-center">
                 <span
-                  class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
-                ></span>
-                <div
-                  class="available inline-flex items-center justify-center w-full px-3 py-1 text-sm text-span bg-background rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
+                  class="relative inline-flex overflow-hidden rounded-full p-[1px]"
                 >
-                  available for hire
-                </div>
-              </span>
-            </div>
-          </a>
-        </div>
-        <div class="name flex flex-col gap-2-5">
-          <h1 id="tittle" class="name text-5xl font-bold text-txt">
-            <span class="hey">Hey, I am </span>Mauricio Palacio</h1>
+                  <span
+                    class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#51E4B8_0%,#21554E_50%,#51E4B8_100%)]"
+                  ></span>
+                  <div
+                    class="available inline-flex items-center justify-center w-full px-3 py-1 text-sm text-span bg-background rounded-full cursor-pointer dark:bg-gray-800 dark:text-white/80 backdrop-blur-3xl whitespace-nowrap"
+                  >
+                    available for hire
+                  </div>
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="name flex flex-col gap-2-5">
+            <h1 id="tittle" class="name text-5xl font-bold text-txt">
+              <span class="hey">Hey, I am </span>Mauricio Palacio
+            </h1>
             <div class="phone text-txt hidden gap-3">
               <PhoneIcon />
               <h4 class="profile-txt text-txt text-xl">+52 9841169322</h4>
             </div>
             <div class="email text-txt hidden gap-3">
-             <EmailIcon />
-              <h4 class="profile-txt text-txt text-xl">palacioluismauricio@gmail.com</h4>
+              <EmailIcon />
+              <h4 class="profile-txt text-txt text-xl">
+                palacioluismauricio@gmail.com
+              </h4>
             </div>
             <div class="web text-txt hidden gap-3">
               <WebIcon />
-              <h4 class="profile-txt text-txt text-xl">www.mauriciopalacio.dev</h4>
+              <h4 class="profile-txt text-txt text-xl">
+                www.mauriciopalacio.dev
+              </h4>
             </div>
-          
+          </div>
+        </div>
+        <h3
+          id="description"
+          class="description text-2xl pt-10 w-160 text-txt opacity-85"
+        >
+          <span class="text-span opacity-100">Software developer</span> from Medellin,
+          Colombia, and Living in Guadalajara, Mexico. 2 years of programming training
+          and currently developing web projects. I am passionate about <span
+            class="text-span opacity-100">software development</span
+          > and constantly evolving.
+        </h3>
+        <div class="job-icons flex gap-3 pt-5">
+          <a
+            href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
+            target="_blank"
+            ><LinkeIn class="w-10"/></a
+          >
+          <a href="https://github.com/Lalz209" target="_blank"
+            ><GitHub class="w-10 text-txt" /></a
+          >
+        </div>
+      </section>
+      <div class="info-section">
+        <div class="experience-component">
+          <Experience />
+        </div>
+        <div class="journey">
+          <Welcome />
+        </div>
+        <div class="skills-component">
+          <Skills />
         </div>
       </div>
-      <h3
-        id="description"
-        class="description text-2xl pt-10 w-160 text-txt opacity-85"
-      >
-        <span class="text-span opacity-100">Software developer</span> from Medellin,
-        Colombia, and Living in Guadalajara, Mexico. 2 years of programming training
-        and currently developing web projects. I am passionate about <span
-          class="text-span opacity-100">software development</span
-        > and constantly evolving.
-      </h3>
-      <div class="job-icons flex gap-3 pt-5">
-        <a
-          href="https://www.linkedin.com/in/luis-mauricio-palacio-orozco-894896305/"
-          target="_blank"
-          ><img alt="linkedin icon" src="LinkedinIcon.png" class="w-10" /></a
-        >
-        <a href="https://github.com/Lalz209" target="_blank"
-          ><img alt="github icon" src="GitHubIcon.webp" class="w-10" /></a
-        >
-      </div>
-    </section>
-    <div class="info-section">
-      <div class="experience-component">
-        <Experience />
-      </div>
-      <div class="journey">
-        <Welcome />
-      </div>
-      <div class="skills-component">
-        <Skills />
-      </div>
-    </div>
-    <Certificates />
-    <Proyects />
-    
+      <Certificates />
+      <Proyects />
 
-    <section id="footer">
-      <footer class="text-center py-6 flex justify-between mt-30">
-        <h4 class="text-txt text-center py-3 px-6">all Rights reserved 2025</h4>
-        <a
-          href={mailtoLink}
-          class="inline-flex items-center gap-2 text-txt font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition-colors duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+      <section id="footer">
+        <footer class="text-center py-6 flex justify-between mt-30">
+          <h4 class="text-txt text-center py-3 px-6">
+            all Rights reserved 2025
+          </h4>
+          <a
+            href={mailtoLink}
+            class="inline-flex items-center gap-2 text-txt font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition-colors duration-300"
           >
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            ></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          Contact
-        </a>
-      </footer>
-    </section>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Contact
+          </a>
+        </footer>
+      </section>
+    </div>
   </div>
-
-</div>
 </Layout>
-
 
 <script>
   const container = document.getElementById("container")!;

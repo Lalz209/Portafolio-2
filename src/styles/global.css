@@ -20,7 +20,11 @@
 
   --color-bg1: #dddddd;
   --color-bg2: #ffffff;
-  --bg2-gradient: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0))
+  --bg2-gradient: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgb(3 0 255 / 83%),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 /* Modo Web Claro */
@@ -28,10 +32,13 @@
   /* Colores base de @theme */
   --color-realbackground: #ffffff;
   --color-bg2: #ffffff;
-  --bg2-gradient: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0));
+  --bg2-gradient: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgb(3 0 255 / 83%),
+    rgba(255, 255, 255, 0)
+  );
   --color-skbg: #0000ff2b;
 }
-
 
 /* Modo Web Oscuro */
 .web.dark-mode {
@@ -88,8 +95,8 @@
   border-radius: 50%;
 }
 
-.web.dark-mode{
-  .profile{
+.web.dark-mode {
+  .profile {
     background-color: var(--color-bg2);
     background-image: radial-gradient(
       ellipse 80% 80% at 50% -20%,
@@ -99,8 +106,8 @@
   }
 }
 
-.cv.dark-mode{
-  .profile{
+.cv.dark-mode {
+  .profile {
     background-color: var(--color-bg2);
     background-image: radial-gradient(
       ellipse 80% 80% at 50% -20%,
@@ -108,18 +115,21 @@
       rgba(255, 255, 255, 0)
     );
   }
-  .skills-component{
+  .skills-component {
     background-color: #0000ff2b;
   }
 }
 
-.web{
-  .expt{
+.web {
+  .expt {
     margin-top: 120px;
   }
-  .profile{
+  .profile {
     background-color: var(--color-bg2);
-    background-image: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0)
+    background-image: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgb(3 0 255 / 83%),
+      rgba(255, 255, 255, 0)
     );
   }
 }
@@ -139,7 +149,7 @@
     align-items: center;
   }
 
-  .name{
+  .name {
     margin-bottom: 20px;
   }
 
@@ -163,15 +173,17 @@
   }
   .profile-container {
     width: 30%;
-    
-    
   }
   .profile {
     border-radius: 0%;
     width: 300px;
     height: 300px;
     background-color: #ffffff;
-    background-image: radial-gradient(ellipse 80% 80% at 50% -20%, rgb(3 0 255 / 83%), rgba(255, 255, 255, 0))
+    background-image: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgb(3 0 255 / 83%),
+      rgba(255, 255, 255, 0)
+    );
   }
   .available-effect {
     display: none;
@@ -200,13 +212,12 @@
     display: flex;
     position: relative;
     width: 100%;
-  
   }
   .journey {
     display: none;
   }
 
-  .icons2{
+  .icons2 {
     width: 20px;
     height: 20px;
   }
@@ -217,8 +228,7 @@
     width: 300px;
     order: 1;
     position: absolute;
-    
-    
+
     background-color: #dddddd;
   }
   .skills-container {
@@ -245,11 +255,10 @@
   .skills-titles {
     margin-bottom: 10px;
     font-size: 1rem;
-    
+
     color: var(--color-navbartxt);
   }
   .titles-container {
-    
     margin-bottom: 30px;
   }
 
@@ -259,7 +268,6 @@
   .skills-content {
     gap: 30px 5px;
     margin-bottom: 50px;
-    
   }
   .skills-content2 {
     gap: 3px;
@@ -287,7 +295,7 @@
 
   /*experience*/
 
-  .experience{
+  .experience {
     position: relative;
     left: 0px;
     top: 30px;
@@ -309,10 +317,8 @@
     position: absolute;
     top: 152px;
     left: 300px;
-    
   }
-  .descriptionexp{
-    
+  .descriptionexp {
     bottom: 55px;
   }
 
@@ -323,7 +329,6 @@
     position: absolute;
     left: 220px;
     bottom: 15px;
-
   }
   .csection {
     position: absolute;
@@ -365,7 +370,7 @@
     flex-wrap: wrap;
     width: 670px;
     position: absolute;
-    
+
     gap: 5px;
   }
   .psubtitle {
@@ -375,7 +380,7 @@
     width: 60px;
     height: 50px;
   }
-  .project-thumbnail:hover{
+  .project-thumbnail:hover {
     scale: 3;
     transition: 300ms;
   }
@@ -399,12 +404,11 @@
     -webkit-box-orient: horizontal;
     -webkit-line-clamp: unset;
   }
-  .project-card:hover{
+  .project-card:hover {
     scale: 1.5;
     transition: 300ms;
-   
   }
-  footer{
+  footer {
     display: none;
   }
 }
