@@ -10,6 +10,8 @@ import Experience from "../components/Experience.astro";
 import PhoneIcon from "../components/Icons/PhoneIcon.astro";
 import EmailIcon from "../components/Icons/EmailIcon.astro";
 import WebIcon from "../components/Icons/WebIcon.astro";
+import Layout from '../layouts/Layout.astro';
+
 
 const InitialMode = "web";
 const email = "palacioluismauricio@gmail.com";
@@ -18,10 +20,12 @@ const body = "Hi, I saw your portfolio and would like to get in touch!";
 const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 ---
 
+<Layout title="Mauricio Palacio Dev - Software developer portfolio">
 <div
   id="container"
   class={`${InitialMode} bg-realbackground min-h-screen font-display container-father`}
 >
+
   <!--<div class="empty-top"></div> -->
   <div
     class="pcontainer section bg-background scroll-m-20 w-[1300px] mx-auto container lg:max-w-5xl md:max-w-2xl"
@@ -116,6 +120,7 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
     </div>
     <Certificates />
     <Proyects />
+    
 
     <section id="footer">
       <footer class="text-center py-6 flex justify-between mt-30">
@@ -144,7 +149,10 @@ const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=
       </footer>
     </section>
   </div>
+
 </div>
+</Layout>
+
 
 <script>
   const container = document.getElementById("container")!;

@@ -1,14 +1,17 @@
 ---
-import '../'
+
+const {title} = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mauricio Palacio</title>
+		<link rel="icon" type="image/svg+xml" href="/Logo2.svg" />
+		<link rel="icon" type="image/png" href="/Logo1.png" />
+		<title>{title}</title>
+		<meta name="description" content="Mauricio Palacio Dev - Software developer portfolio" />
+		<meta name="author" content="Mauricio Palacio" />
 	</head>
 	
 	<body>
