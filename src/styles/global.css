@@ -412,3 +412,53 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 600px) {
+  /*/////////////NAV/////////////*/
+  .switchwc{
+    display: none;
+  }
+
+  .navigation{
+    display: none;
+  }
+  /*/////////////CONTAINER/////////////*/
+  .pcontainer{
+    width: 100vw;
+  }
+  /*/////////////TITLE/////////////*/
+  .title{
+    margin-left: 2rem;
+    
+  }
+
+  .profile{
+    width: 150px;
+    height: 150px;
+  }
+  .available{
+    height: 40px;
+    width: 130px;
+    font-size: 1rem;
+  }
+
+  .name{
+    font-size: 4rem;
+  }
+  .description{
+    font-size: 2rem;
+    margin-left: 2rem;
+    width: 80%;
+  }
+  /*/////////////EXPERIENCE/////////////*/
+
+  /*/////////////HISTORY/////////////*/
+
+  /*/////////////SKILLS/////////////*/
+
+  /*/////////////PERSONAL SKILLS/////////////*/
+  
+  /*/////////////CERTIFICATES/////////////*/
+
+  /*/////////////PROJECTS/////////////*/
+}
