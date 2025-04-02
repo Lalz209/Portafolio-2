@@ -18,6 +18,7 @@ import MongoIcon from "./Icons/MongoIcon.astro";
 import SQLIcon from "./Icons/SQLIcon.astro";
 import JSXIcon from "./Icons/JSXIcon.astro";
 import TypeScriptIcon from "./Icons/TypeScriptIcon.astro";
+import InvisibleIcon from "./Icons/Invisible.astro";
 
 /**
  * Define the possible keys for the language icons.
@@ -65,7 +66,7 @@ const languageIcons: Record<LanguageIconKey, AstroComponent | null> = {
   "sql-logo.svg": SQLIcon,
   "jsx-logo.png": JSXIcon,
   "typescript-logo.png": TypeScriptIcon,
-  "transparent.png": null, // Represents an unavailable icon
+  "transparent.png": InvisibleIcon, // Represents an unavailable icon
 };
 
 /**
@@ -201,7 +202,7 @@ const projects: Project[] = [
           </h3>
 
           <!-- Container for Image and Language Icons -->
-          <div class="flex gap-5 w-[100%] justify-center">
+          <div class="projHead flex gap-5 w-[100%] justify-center">
             <!-- Project Thumbnail Image -->
             <img
               src={pro.images[1] || ""}
@@ -214,7 +215,7 @@ const projects: Project[] = [
               <h3 class="languageusedt font-bold text-txt text-sm mb-5">
                 Languages used:
               </h3>
-              <div class="grid grid-cols-3 gap-2 w-fit justify-items-center text-center">
+              <div class="projgrid grid grid-cols-3 gap-2 w-fit justify-items-center text-center">
                 {
                   pro.programmingLanguages.map((leng) => {
                     const IconComponent = languageIcons[leng];
