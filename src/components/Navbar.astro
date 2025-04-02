@@ -2,6 +2,7 @@
 const { modeInitial } = Astro.props;
 ---
 
+<!-- Barra de navegación principal -->
 <nav id="navigation" class="navigation bg-nvbg rounded-4xl text-txt p-4 fixed flex justify-center top-10 left-1/2 transform -translate-x-1/2 w-auto z-10 transition-all duration-300 hidden md:block">
   <ul class="flex space-x-4">
     <li><a href="#about-me">About me</a></li>
@@ -9,37 +10,98 @@ const { modeInitial } = Astro.props;
     <li><a href="#skills">Skills</a></li>
     <li><a href="#certificates">Certificates</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="mailto:palacioluismauricio@gmail.com.com?subject=Contact%20from%20Portfolio&body=Hi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch!">Contact</a></li>
+    <li><a href="mailto:palacioluismauricio@gmail.com?subject=Contact%20from%20Portfolio&body=Hi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch!">Contact</a></li>
   </ul>
 </nav>
 
-<!-- Mobile Hamburger Button -->
+<!-- Botón hamburguesa para móviles -->
 <div id="mobile-menu-button" class="fixed top-4 right-4 z-50 bg-nvbg p-3 rounded-full shadow-lg md:hidden">
-  <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg id="menu-icon" class="text-txt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <line x1="3" y1="12" x2="21" y2="12"></line>
     <line x1="3" y1="6" x2="21" y2="6"></line>
     <line x1="3" y1="18" x2="21" y2="18"></line>
   </svg>
-  <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+  <svg id="close-icon"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
     <line x1="18" y1="6" x2="6" y2="18"></line>
     <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 </div>
 
-<!-- Mobile Menu -->
+<!-- Menú móvil -->
 <div id="mobile-menu" class="fixed top-16 right-4 z-40 bg-nvbg rounded-lg shadow-xl w-48 overflow-hidden transform origin-top scale-y-0 transition-transform duration-300 ease-out md:hidden">
   <ul class="py-2">
-    <li><a href="#about-me" class="block px-4 py-2 hover:bg-gray-700">About me</a></li>
-    <li><a href="#experience" class="block px-4 py-2 hover:bg-gray-700">Experience</a></li>
-    <li><a href="#skills" class="block px-4 py-2 hover:bg-gray-700">Skills</a></li>
-    <li><a href="#certificates" class="block px-4 py-2 hover:bg-gray-700">Certificates</a></li>
-    <li><a href="#projects" class="block px-4 py-2 hover:bg-gray-700">Projects</a></li>
-    <li><a href="mailto:palacioluismauricio@gmail.com.com?subject=Contact%20from%20Portfolio&body=Hi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch!" class="block px-4 py-2 hover:bg-gray-700">Contact</a></li>
+    <li><a href="#about-me" class="block text-txt px-4 py-2 hover:bg-gray-700">About me</a></li>
+    <li><a href="#experience" class="block text-txt px-4 py-2 hover:bg-gray-700">Experience</a></li>
+    <li><a href="#skills" class="block text-txt px-4 py-2 hover:bg-gray-700">Skills</a></li>
+    <li><a href="#certificates" class="block text-txt px-4 py-2 hover:bg-gray-700">Certificates</a></li>
+    <li><a href="#projects" class="block text-txt px-4 py-2 hover:bg-gray-700">Projects</a></li>
+    <li><a href="mailto:palacioluismauricio@gmail.com?subject=Contact%20from%20Portfolio&body=Hi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch!" class="block text-txt px-4 py-2 hover:bg-gray-700">Contact</a></li>
   </ul>
 </div>
 
+<!-- Barra de navegación compacta (a la derecha al hacer scroll) -->
 <div id="navigation-compact" class="top-1/2 transform -translate-y-1/2 w-auto fixed right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300 compact-hidden hidden md:block">
-  <!-- ... (tu código existente para la navegación compacta) ... -->
+  <ul class="flex flex-col space-y-2">
+    <li><a class="hover:text-2nd" href="#top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M12 5l0 14"></path>
+        <path d="M16 9l-4 -4"></path>
+        <path d="M8 9l4 -4"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="#experience-section">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+        <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
+        <path d="M12 12l0 .01"></path>
+        <path d="M3 13a20 20 0 0 0 18 0"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="#about-me-section">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="#skills-section">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
+        <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
+        <path d="M5 8h4"></path>
+        <path d="M9 16h4"></path>
+        <path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"></path>
+        <path d="M14 9l4 -1"></path>
+        <path d="M16 16l3.923 -.98"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="#certificates-section">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+        <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"></path>
+        <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73"></path>
+        <path d="M6 9l12 0"></path>
+        <path d="M6 12l3 0"></path>
+        <path d="M6 15l2 0"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="#projects-section">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M7 8l-4 4l4 4"></path>
+        <path d="M17 8l4 4l-4 4"></path>
+        <path d="M14 4l-4 16"></path>
+      </svg>
+    </a></li>
+    <li><a class="hover:text-2nd" href="mailto:palacioluismauricio@gmail.com?subject=Contact%20from%20Portfolio&body=Hi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch!">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
+        <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
+        <path d="M10 16h6"></path>
+        <path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+        <path d="M4 8h3"></path>
+        <path d="M4 12h3"></path>
+        <path d="M4 16h3"></path>
+      </svg>
+    </a></li>
+  </ul>
 </div>
 
 <script>
@@ -49,18 +111,17 @@ const { modeInitial } = Astro.props;
     const container = document.getElementById("container");
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
-    const menuIcon = document.getElementById("menu-icon")!;
-    const closeIcon = document.getElementById("close-icon")!;
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
 
-    if (!container || !navigation || !navigationCompact || !mobileMenuButton || !mobileMenu) {
-      console.error("One or more elements not found");
+    if (!container || !navigation || !navigationCompact || !mobileMenuButton || !mobileMenu || !menuIcon || !closeIcon) {
+      console.error("One or more elements not found:", { container, navigation, navigationCompact, mobileMenuButton, mobileMenu, menuIcon, closeIcon });
       return;
     }
 
     // Toggle mobile menu
     mobileMenuButton.addEventListener("click", () => {
       const isOpen = mobileMenu.classList.contains("scale-y-100");
-      
       if (isOpen) {
         mobileMenu.classList.remove("scale-y-100");
         mobileMenu.classList.add("scale-y-0");
@@ -74,7 +135,7 @@ const { modeInitial } = Astro.props;
       }
     });
 
-    // Close mobile menu when clicking on a link
+    // Close mobile menu when clicking a link
     document.querySelectorAll("#mobile-menu a").forEach(link => {
       link.addEventListener("click", () => {
         mobileMenu.classList.remove("scale-y-100");
@@ -84,11 +145,7 @@ const { modeInitial } = Astro.props;
       });
     });
 
-    // Resto de tu código existente para el comportamiento de scroll...
-    if(navigation.classList.contains("cv")){
-      navigation.classList.add("hidden");
-    }
-
+    // Observer para modo CV
     const observer = new MutationObserver(() => {
       if (container.classList.contains("cv")) {
         navigation.classList.add("hidden");
@@ -106,26 +163,21 @@ const { modeInitial } = Astro.props;
     });
     observer.observe(container, { attributes: true, attributeFilter: ["class"] });
 
-    let lastScroll = 0;
-    let timeoutId = null;
-
+    // Scroll behavior para la barra compacta
     window.addEventListener("scroll", () => {
-      const currentScroll = window.scrollY;
-
-      if (container.classList.contains("web")) {
-        if (currentScroll > 150) {
-          // Scrolling down past 100px: hide top nav, show compact nav
+      if (window.innerWidth >= 768) { // Solo en pantallas grandes (md y superiores)
+        if (window.scrollY > 100) {
           navigation.classList.add("shrunk");
+          navigation.classList.add("hidden");
+          navigationCompact.classList.remove("compact-hidden");
+          navigationCompact.classList.remove("hidden");
           setTimeout(() => {
             navigation.classList.add("hidden");
-            navigationCompact.classList.remove("hidden");
-            navigationCompact.classList.remove("compact-hidden");
-          }, 500);
-        } else if (currentScroll <= 150 && navigation.classList.contains("hidden")) {
-          // Scrolling up to top (or near top): show top nav, hide compact nav
+          }, 300);
+        } else {
           navigationCompact.classList.add("compact-hidden");
-          timeoutId = setTimeout(() => {
-            navigationCompact.classList.add("hidden");
+          navigationCompact.classList.add("hidden");
+          setTimeout(() => {
             navigation.classList.remove("shrunk");
             navigation.classList.remove("hidden");
           }, 500);
@@ -136,50 +188,29 @@ const { modeInitial } = Astro.props;
 </script>
 
 <style>
-  .hidden {
-    display: none;
-  }
-  .shrunk {
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  .compact-hidden {
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  #navigation-compact {
-    width: auto;
-    padding: 20px;
-    transform-origin: right center;
-  }
-  .transition-all {
-    transition: all 0.5s ease;
-  }
   html {
     scroll-behavior: smooth;
   }
-  
-  /* Mobile menu styles */
+
+  /* Estilos para el menú móvil */
   #mobile-menu-button {
     cursor: pointer;
     display: none;
   }
-  
+
   #mobile-menu {
     display: none;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
   }
-  
-  @media (max-width: 600px) {
+
+  @media (max-width: 767px) { /* Ajustado a md breakpoint */
     #mobile-menu-button {
       display: block;
     }
-    
     #mobile-menu {
       display: block;
     }
-    
     #navigation, #navigation-compact {
       display: none !important;
     }

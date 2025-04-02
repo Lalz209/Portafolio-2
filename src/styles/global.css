@@ -136,6 +136,10 @@
   .title{
     margin-left: 0;
   }
+
+  .projgrid{
+    width: inherit;
+  }
 }
 
 /* CV styles */
