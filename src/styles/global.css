@@ -222,6 +222,11 @@
     height: 20px;
   }
 
+  .icons3 {
+    width: 20px;
+    height: 20px;
+  }
+
   /* SKILLS */
   .skills-component {
     padding-top: 15px;
@@ -415,50 +420,184 @@
 
 @media screen and (max-width: 600px) {
   /*/////////////NAV/////////////*/
-  .switchwc{
+
+  * {
+    text-align: center;
+    align-items: center;
+  }
+
+  .headerP {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .switchwc {
     display: none;
   }
 
-  .navigation{
-    display: none;
+  .switchmov {
+    margin-top: 0px;
   }
+
   /*/////////////CONTAINER/////////////*/
-  .pcontainer{
+  .pcontainer {
     width: 100vw;
   }
+
+  .container {
+    margin-top: 0px;
+  }
   /*/////////////TITLE/////////////*/
-  .title{
-    margin-left: 2rem;
-    
+  .title {
+    padding-top: 1rem;
   }
 
-  .profile{
+  .profile {
     width: 150px;
     height: 150px;
   }
-  .available{
+  .available {
     height: 40px;
     width: 130px;
     font-size: 1rem;
   }
 
-  .name{
+  .name {
     font-size: 4rem;
   }
-  .description{
-    font-size: 2rem;
-    margin-left: 2rem;
-    width: 80%;
+  .description {
+    width: 85%;
+  }
+
+  .job-icons {
+    display: flex;
+    justify-content: center;
   }
   /*/////////////EXPERIENCE/////////////*/
 
+  .experience {
+  }
+
+  .icons2 {
+    height: min-content;
+    width: min-content;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    width: min-content;
+  }
+
+  .edescription {
+    width: 16.4rem;
+  }
+
+  ol{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .expTxt{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
   /*/////////////HISTORY/////////////*/
 
+  .container {
+    margin-top: 0;
+    margin-bottom: 5rem;
+  }
+
+  .order-1 {
+    width: 90%;
+    justify-self: center;
+  }
+
+  .journeyTitleContainer {
+    margin-bottom: 0;
+    margin-top: 5rem;
+  }
+
+  .historyLine {
+    display: none;
+  }
+
+  .historyNumber {
+    display: none;
+  }
+
+  .historyContainer {
+    display: block;
+  }
+
+  .historyContainer2 {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .historyBoxes {
+    padding: 0;
+    padding-top: 3rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
   /*/////////////SKILLS/////////////*/
+  .skills-container{
+    margin-bottom: 2rem;
+  }
+
+  .icons3 {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .icons {
+    width: 2rem;
+    height: 2rem;
+  }
+  .skill-title {
+    font-size: 0.8rem;
+  }
+
+  .skills-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-content2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid-item {
+    width: 80%;
+  }
+
+  .skillTitleContainer {
+    margin-top: 0;
+  }
+
+  .skills-details{
+    margin-bottom: 2rem;
+  }
 
   /*/////////////PERSONAL SKILLS/////////////*/
-  
+
   /*/////////////CERTIFICATES/////////////*/
 
   /*/////////////PROJECTS/////////////*/
+
+  .project-card {
+    justify-self: start;
+  }
 }
