@@ -3,7 +3,7 @@ const { modeInitial } = Astro.props;
 ---
 
 <!-- Barra de navegación principal -->
-<nav id="navigation" class="navigation bg-nvbg rounded-4xl text-txt p-4 fixed flex justify-center top-10 left-1/2 transform -translate-x-1/2 w-auto z-10 transition-all duration-300 hidden md:block">
+<nav id="navigation" class="navigation hidden bg-nvbg rounded-4xl text-txt p-4 fixed flex justify-center top-10 left-1/2 transform -translate-x-1/2 w-auto z-10 transition-all duration-300 md:block">
   <ul class="flex space-x-4">
     <li><a href="#about-me">About me</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -28,7 +28,7 @@ const { modeInitial } = Astro.props;
 </div>
 
 <!-- Menú móvil -->
-<div id="mobile-menu" class="fixed top-16 right-4 z-40 bg-nvbg rounded-lg shadow-xl w-48 overflow-hidden transform origin-top scale-y-0 transition-transform duration-300 ease-out md:hidden">
+<div id="mobile-menu" class="fixed top-16  right-4 z-40 bg-nvbg rounded-lg shadow-xl w-48 overflow-hidden transform origin-top scale-y-0 transition-transform duration-300 ease-out md:hidden">
   <ul class="py-2">
     <li><a href="#about-me" class="block text-txt px-4 py-2 hover:bg-gray-700">About me</a></li>
     <li><a href="#experience" class="block text-txt px-4 py-2 hover:bg-gray-700">Experience</a></li>
@@ -40,7 +40,7 @@ const { modeInitial } = Astro.props;
 </div>
 
 <!-- Barra de navegación compacta (a la derecha al hacer scroll) -->
-<div id="navigation-compact" class="top-1/2 transform -translate-y-1/2 w-auto fixed right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300 compact-hidden hidden md:block">
+<div id="navigation-compact" class="top-1/2 transform -translate-y-1/2 w-auto fixed opacity-45 right-4 bg-nvbg text-navbartxt p-2 rounded shadow-lg z-10 transition-all duration-300 compact-hidden hidden md:block">
   <ul class="flex flex-col space-y-2">
     <li><a class="hover:text-2nd" href="#top">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1.5">
@@ -117,6 +117,8 @@ const { modeInitial } = Astro.props;
     if (!container || !navigation || !navigationCompact || !mobileMenuButton || !mobileMenu || !menuIcon || !closeIcon) {
       console.error("One or more elements not found:", { container, navigation, navigationCompact, mobileMenuButton, mobileMenu, menuIcon, closeIcon });
       return;
+    } else {
+      console.log("All elements found successfully:", { container, navigation, navigationCompact, mobileMenuButton, mobileMenu, menuIcon, closeIcon });
     }
 
     // Toggle mobile menu
