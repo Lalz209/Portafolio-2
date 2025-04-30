@@ -217,4 +217,29 @@ const { modeInitial } = Astro.props;
       display: none !important;
     }
   }
+
+  /* Transición para la barra de navegación superior */
+  #navigation {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #navigation.shrunk {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  /* Transición para la barra lateral compacta */
+  #navigation-compact {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #navigation-compact.compact-hidden {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  #navigation-compact {
+    transform: scale(1);
+    opacity: 1;
+  }
 </style>
