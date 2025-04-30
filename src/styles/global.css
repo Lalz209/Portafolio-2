@@ -154,6 +154,14 @@
     padding-left: 0;
   }
 
+  .navigation-lateral {
+    display: none;
+  }
+
+  .navigation{
+    display: none;
+  }
+
   .pcontainer {
     height: 1480px;
     position: relative;
